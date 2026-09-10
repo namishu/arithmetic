@@ -2,6 +2,8 @@
 
 ## 1.0.0
 
+- Add GitHub Release publishing to PyPI with trusted publishing and a manual validation-only run.
+
 - Consolidate user instructions in the READMEs; remove usage and contribution guides.
 
 - Document generation arguments and every CLI command directly in both READMEs.
