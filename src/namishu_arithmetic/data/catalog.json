@@ -1,0 +1,1580 @@
+{
+  "schema_version": 1,
+  "levels": [
+    {
+      "series": "addsub",
+      "level": 1,
+      "title": {
+        "en": "Two-number addition",
+        "zh-CN": "两数加法"
+      },
+      "rules": {
+        "en": "Operands independently sampled from [0, 10]; sums can reach 20.",
+        "zh-CN": "`x, y ∈ [0, 10]`"
+      },
+      "operand_types": [
+        "integer"
+      ],
+      "negative_operands_possible": false,
+      "operators": [
+        "+"
+      ],
+      "blank": false,
+      "parentheses": false,
+      "default_problems_per_page": 10
+    },
+    {
+      "series": "addsub",
+      "level": 2,
+      "title": {
+        "en": "Nonnegative subtraction",
+        "zh-CN": "两数减法"
+      },
+      "rules": {
+        "en": "Sample m,n in [0, 10]; display (m+n) - m. Minuends can reach 20; results are nonnegative.",
+        "zh-CN": "由 `m, n ∈ [0, 10]` 反推为 `(m+n) - m`"
+      },
+      "operand_types": [
+        "integer"
+      ],
+      "negative_operands_possible": false,
+      "operators": [
+        "-"
+      ],
+      "blank": false,
+      "parentheses": false,
+      "default_problems_per_page": 10
+    },
+    {
+      "series": "addsub",
+      "level": 3,
+      "title": {
+        "en": "Addition and subtraction",
+        "zh-CN": "两数加减混合"
+      },
+      "rules": {
+        "en": "Mix levels 1 and 2; displayed subtraction operands can reach 20.",
+        "zh-CN": "混合 level 1 和 level 2"
+      },
+      "operand_types": [
+        "integer"
+      ],
+      "negative_operands_possible": false,
+      "operators": [
+        "+",
+        "-"
+      ],
+      "blank": false,
+      "parentheses": false,
+      "default_problems_per_page": 10
+    },
+    {
+      "series": "addsub",
+      "level": 4,
+      "title": {
+        "en": "Three-number addition",
+        "zh-CN": "三数连加"
+      },
+      "rules": {
+        "en": "Three operands in [0, 10]; sums can reach 30.",
+        "zh-CN": "`x, y, z ∈ [0, 10]`"
+      },
+      "operand_types": [
+        "integer"
+      ],
+      "negative_operands_possible": false,
+      "operators": [
+        "+"
+      ],
+      "blank": false,
+      "parentheses": false,
+      "default_problems_per_page": 10
+    },
+    {
+      "series": "addsub",
+      "level": 5,
+      "title": {
+        "en": "Nonnegative chained subtraction",
+        "zh-CN": "三数连减"
+      },
+      "rules": {
+        "en": "Sample m,n,p in [0, 10]; display (m+n+p) - m - n; results are nonnegative.",
+        "zh-CN": "由 `m, n, p ∈ [0, 10]` 反推为 `(m+n+p) - m - n`"
+      },
+      "operand_types": [
+        "integer"
+      ],
+      "negative_operands_possible": false,
+      "operators": [
+        "-"
+      ],
+      "blank": false,
+      "parentheses": false,
+      "default_problems_per_page": 10
+    },
+    {
+      "series": "addsub",
+      "level": 6,
+      "title": {
+        "en": "Chained addition or subtraction",
+        "zh-CN": "三数加减基础混合"
+      },
+      "rules": {
+        "en": "Mix levels 4 and 5; displayed minuends can reach 30.",
+        "zh-CN": "混合 level 4 和 level 5"
+      },
+      "operand_types": [
+        "integer"
+      ],
+      "negative_operands_possible": false,
+      "operators": [
+        "+",
+        "-"
+      ],
+      "blank": false,
+      "parentheses": false,
+      "default_problems_per_page": 10
+    },
+    {
+      "series": "addsub",
+      "level": 7,
+      "title": {
+        "en": "Three-number mixed addition/subtraction",
+        "zh-CN": "三数加减混合"
+      },
+      "rules": {
+        "en": "Sample a,b,c in [0, 10]; mix a+(b+c)-b, (a+c)-a+b, and a+b+c; results are nonnegative.",
+        "zh-CN": "源数值取自 `[0, 10]`，部分题型通过反推生成"
+      },
+      "operand_types": [
+        "integer"
+      ],
+      "negative_operands_possible": false,
+      "operators": [
+        "+",
+        "-"
+      ],
+      "blank": false,
+      "parentheses": false,
+      "default_problems_per_page": 10
+    },
+    {
+      "series": "addsub",
+      "level": 8,
+      "title": {
+        "en": "Subtraction with signed minuends",
+        "zh-CN": "含负数被减数"
+      },
+      "rules": {
+        "en": "First operand in [-15, 15], second in [0, 15]; results can be negative.",
+        "zh-CN": "`x ∈ [-15, 15]`，`y ∈ [0, 15]`"
+      },
+      "operand_types": [
+        "integer"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "-"
+      ],
+      "blank": false,
+      "parentheses": false,
+      "default_problems_per_page": 10
+    },
+    {
+      "series": "addsub",
+      "level": 9,
+      "title": {
+        "en": "Subtraction and negative-number addition",
+        "zh-CN": "减法与负数加法"
+      },
+      "rules": {
+        "en": "Mix x-y with x,y in [0,15] and x+y with x in [-15,-1], y in [0,15].",
+        "zh-CN": "变体一：`x, y ∈ [0, 15]`；变体二：`x ∈ [-15, -1]`、`y ∈ [0, 15]`"
+      },
+      "operand_types": [
+        "integer"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "+",
+        "-"
+      ],
+      "blank": false,
+      "parentheses": false,
+      "default_problems_per_page": 10
+    },
+    {
+      "series": "addsub",
+      "level": 10,
+      "title": {
+        "en": "Signed two-number addition/subtraction",
+        "zh-CN": "负数参与的两数加减"
+      },
+      "rules": {
+        "en": "Mix negative-leading addition/subtraction with x in [-15,-1], y in [0,15], and subtraction with both in [0,15].",
+        "zh-CN": "负数变体中 `x ∈ [-15, -1]`、`y ∈ [0, 15]`；另有 `x, y ∈ [0, 15]` 的减法"
+      },
+      "operand_types": [
+        "integer"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "+",
+        "-"
+      ],
+      "blank": false,
+      "parentheses": false,
+      "default_problems_per_page": 10
+    },
+    {
+      "series": "addsub",
+      "level": 11,
+      "title": {
+        "en": "Signed chained subtraction",
+        "zh-CN": "含负数的三数连减"
+      },
+      "rules": {
+        "en": "First operand in [-10,10], remaining operands in [0,10].",
+        "zh-CN": "`x ∈ [-10, 10]`，`y, z ∈ [0, 10]`"
+      },
+      "operand_types": [
+        "integer"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "-"
+      ],
+      "blank": false,
+      "parentheses": false,
+      "default_problems_per_page": 10
+    },
+    {
+      "series": "addsub",
+      "level": 12,
+      "title": {
+        "en": "Three-number addition/subtraction",
+        "zh-CN": "三数加减"
+      },
+      "rules": {
+        "en": "Three operands in [0,10]; use + and - once each.",
+        "zh-CN": "`x, y, z ∈ [0, 10]`，`op ∈ {+, -}`，两个运算符不重复"
+      },
+      "operand_types": [
+        "integer"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "+",
+        "-"
+      ],
+      "blank": false,
+      "parentheses": false,
+      "default_problems_per_page": 10
+    },
+    {
+      "series": "addsub",
+      "level": 13,
+      "title": {
+        "en": "Negative leading operand",
+        "zh-CN": "负数开头的三数加减"
+      },
+      "rules": {
+        "en": "First operand in [-10,-1], remaining operands in [0,10]; use + and - once each.",
+        "zh-CN": "`x ∈ [-10, -1]`，`y, z ∈ [0, 10]`，`op ∈ {+, -}`，两个运算符不重复"
+      },
+      "operand_types": [
+        "integer"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "+",
+        "-"
+      ],
+      "blank": false,
+      "parentheses": false,
+      "default_problems_per_page": 10
+    },
+    {
+      "series": "addsub",
+      "level": 14,
+      "title": {
+        "en": "Adding or subtracting a negative number",
+        "zh-CN": "正数与负数加减"
+      },
+      "rules": {
+        "en": "First operand in [0,20], second in [-20,-1]; choose + or -.",
+        "zh-CN": "`x ∈ [0, 20]`，`y ∈ [-20, -1]`"
+      },
+      "operand_types": [
+        "integer"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "+",
+        "-"
+      ],
+      "blank": false,
+      "parentheses": false,
+      "default_problems_per_page": 10
+    },
+    {
+      "series": "addsub",
+      "level": 15,
+      "title": {
+        "en": "Two negative operands",
+        "zh-CN": "两个负数加减"
+      },
+      "rules": {
+        "en": "Both operands in [-20,-1]; choose + or -.",
+        "zh-CN": "`x, y ∈ [-20, -1]`"
+      },
+      "operand_types": [
+        "integer"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "+",
+        "-"
+      ],
+      "blank": false,
+      "parentheses": false,
+      "default_problems_per_page": 10
+    },
+    {
+      "series": "addsub",
+      "level": 16,
+      "title": {
+        "en": "Three signed addends",
+        "zh-CN": "三数连加，含负数"
+      },
+      "rules": {
+        "en": "Three operands in [-15,15]; add all three.",
+        "zh-CN": "`x, y, z ∈ [-15, 15]`"
+      },
+      "operand_types": [
+        "integer"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "+"
+      ],
+      "blank": false,
+      "parentheses": false,
+      "default_problems_per_page": 10
+    },
+    {
+      "series": "addsub",
+      "level": 17,
+      "title": {
+        "en": "Addition missing number",
+        "zh-CN": "加法填空"
+      },
+      "rules": {
+        "en": "Two visible values independently sampled from [0,40]; one is the right-hand result; missing value can be negative.",
+        "zh-CN": "`x, y ∈ [0, 40]`，填空位置随机"
+      },
+      "operand_types": [
+        "integer"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "+"
+      ],
+      "blank": true,
+      "parentheses": false,
+      "default_problems_per_page": 10
+    },
+    {
+      "series": "addsub",
+      "level": 18,
+      "title": {
+        "en": "Subtraction missing number",
+        "zh-CN": "减法填空"
+      },
+      "rules": {
+        "en": "Two visible values independently sampled from [0,40]; one is the right-hand result; missing value can be negative.",
+        "zh-CN": "`x, y ∈ [0, 40]`，填空位置随机"
+      },
+      "operand_types": [
+        "integer"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "-"
+      ],
+      "blank": true,
+      "parentheses": false,
+      "default_problems_per_page": 10
+    },
+    {
+      "series": "addsub",
+      "level": 19,
+      "title": {
+        "en": "Addition/subtraction missing number",
+        "zh-CN": "加减填空"
+      },
+      "rules": {
+        "en": "Two visible values in [0,40]; choose + or -; one visible value is the right-hand result.",
+        "zh-CN": "`x, y ∈ [0, 40]`，`op ∈ {+, -}`，填空位置随机"
+      },
+      "operand_types": [
+        "integer"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "+",
+        "-"
+      ],
+      "blank": true,
+      "parentheses": false,
+      "default_problems_per_page": 10
+    },
+    {
+      "series": "addsub",
+      "level": 20,
+      "title": {
+        "en": "Smaller-range missing number",
+        "zh-CN": "加减填空进阶"
+      },
+      "rules": {
+        "en": "Two visible values in [0,30]; choose + or -; one visible value is the right-hand result.",
+        "zh-CN": "`x, y ∈ [0, 30]`，`op ∈ {+, -}`，填空位置随机"
+      },
+      "operand_types": [
+        "integer"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "+",
+        "-"
+      ],
+      "blank": true,
+      "parentheses": false,
+      "default_problems_per_page": 10
+    },
+    {
+      "series": "addsub",
+      "level": 21,
+      "title": {
+        "en": "Fixed second missing number",
+        "zh-CN": "固定右侧填空"
+      },
+      "rules": {
+        "en": "Visible left value in [-30,30], right-hand result in [0,30]; blank is the second operand.",
+        "zh-CN": "`x ∈ [-30, 30]`，`y ∈ [0, 30]`，运算符随机"
+      },
+      "operand_types": [
+        "integer"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "+",
+        "-"
+      ],
+      "blank": true,
+      "parentheses": false,
+      "default_problems_per_page": 10
+    },
+    {
+      "series": "addsub",
+      "level": 22,
+      "title": {
+        "en": "Three-number missing number",
+        "zh-CN": "三数加减填空"
+      },
+      "rules": {
+        "en": "Three visible values in [0,30]; the final one is the result; use + and - once each and insert a blank on the left.",
+        "zh-CN": "`x, y, z ∈ [0, 30]`，`op ∈ {+, -}`，填空位置随机 最后一个可见源数作为等号右侧结果，其余可见数和填空位于左侧。"
+      },
+      "operand_types": [
+        "integer"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "+",
+        "-"
+      ],
+      "blank": true,
+      "parentheses": false,
+      "default_problems_per_page": 10
+    },
+    {
+      "series": "addsub",
+      "level": 23,
+      "title": {
+        "en": "Signed leading operand missing number",
+        "zh-CN": "负数开头的三数填空"
+      },
+      "rules": {
+        "en": "First visible value in [-30,30], other visible values in [0,30]; the final value is the result; fixed - then +.",
+        "zh-CN": "`x ∈ [-30, 30]`，`y, z ∈ [0, 30]`，填空位置随机 最后一个可见源数作为等号右侧结果，其余可见数和填空位于左侧。"
+      },
+      "operand_types": [
+        "integer"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "+",
+        "-"
+      ],
+      "blank": true,
+      "parentheses": false,
+      "default_problems_per_page": 10
+    },
+    {
+      "series": "addsub",
+      "level": 24,
+      "title": {
+        "en": "Signed three-number missing number",
+        "zh-CN": "含负数的三数加减填空"
+      },
+      "rules": {
+        "en": "Three visible values in [-30,30]; the final one is the result; use + and - once each and insert a blank on the left.",
+        "zh-CN": "`x, y, z ∈ [-30, 30]`，`op ∈ {+, -}`，填空位置随机 最后一个可见源数作为等号右侧结果，其余可见数和填空位于左侧。"
+      },
+      "operand_types": [
+        "integer"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "+",
+        "-"
+      ],
+      "blank": true,
+      "parentheses": false,
+      "default_problems_per_page": 10
+    },
+    {
+      "series": "muldiv",
+      "level": 1,
+      "title": {
+        "en": "Single-digit nonnegative multiplication",
+        "zh-CN": "一位非负数乘法"
+      },
+      "rules": {
+        "en": "Two factors in [0,9].",
+        "zh-CN": "`x, y ∈ [0, 9]`"
+      },
+      "operand_types": [
+        "integer"
+      ],
+      "negative_operands_possible": false,
+      "operators": [
+        "×"
+      ],
+      "blank": false,
+      "parentheses": false,
+      "default_problems_per_page": 10
+    },
+    {
+      "series": "muldiv",
+      "level": 2,
+      "title": {
+        "en": "Single-digit signed multiplication",
+        "zh-CN": "一位整数乘法"
+      },
+      "rules": {
+        "en": "Two factors in [-9,9].",
+        "zh-CN": "`x, y ∈ [-9, 9]`"
+      },
+      "operand_types": [
+        "integer"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "×"
+      ],
+      "blank": false,
+      "parentheses": false,
+      "default_problems_per_page": 10
+    },
+    {
+      "series": "muldiv",
+      "level": 3,
+      "title": {
+        "en": "Nonnegative missing factor",
+        "zh-CN": "一位非负数乘法填空"
+      },
+      "rules": {
+        "en": "Sample two factors in [0,9], calculate their product, then hide the second factor.",
+        "zh-CN": "由 `x, y ∈ [0, 9]` 反推 `z = x × y`"
+      },
+      "operand_types": [
+        "integer"
+      ],
+      "negative_operands_possible": false,
+      "operators": [
+        "×"
+      ],
+      "blank": true,
+      "parentheses": false,
+      "default_problems_per_page": 10
+    },
+    {
+      "series": "muldiv",
+      "level": 4,
+      "title": {
+        "en": "Signed missing factor",
+        "zh-CN": "一位整数乘法填空"
+      },
+      "rules": {
+        "en": "Sample two factors in [-9,9], calculate their product, then hide the second factor.",
+        "zh-CN": "由 `x, y ∈ [-9, 9]` 反推 `z = x × y`"
+      },
+      "operand_types": [
+        "integer"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "×"
+      ],
+      "blank": true,
+      "parentheses": false,
+      "default_problems_per_page": 10
+    },
+    {
+      "series": "muldiv",
+      "level": 5,
+      "title": {
+        "en": "Single-digit nonnegative division",
+        "zh-CN": "一位非负数除法"
+      },
+      "rules": {
+        "en": "Divisor and quotient in [0,9]; derive the dividend from their product. Teaching mode may include a zero divisor.",
+        "zh-CN": "由 `y, q ∈ [0, 9]` 反推 `x = y × q`"
+      },
+      "operand_types": [
+        "integer"
+      ],
+      "negative_operands_possible": false,
+      "operators": [
+        "÷"
+      ],
+      "blank": false,
+      "parentheses": false,
+      "default_problems_per_page": 10
+    },
+    {
+      "series": "muldiv",
+      "level": 6,
+      "title": {
+        "en": "Single-digit signed division",
+        "zh-CN": "一位整数除法"
+      },
+      "rules": {
+        "en": "Divisor and quotient in [-9,9]; derive the dividend from their product. Teaching mode may include a zero divisor.",
+        "zh-CN": "由 `y, q ∈ [-9, 9]` 反推 `x = y × q`"
+      },
+      "operand_types": [
+        "integer"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "÷"
+      ],
+      "blank": false,
+      "parentheses": false,
+      "default_problems_per_page": 10
+    },
+    {
+      "series": "muldiv",
+      "level": 7,
+      "title": {
+        "en": "Nonnegative division missing number",
+        "zh-CN": "一位非负数除法填空"
+      },
+      "rules": {
+        "en": "Divisor and quotient in [0,9]; derive dividend, then hide divisor or dividend.",
+        "zh-CN": "由 `y, q ∈ [0, 9]` 反推 `x = y × q`"
+      },
+      "operand_types": [
+        "integer"
+      ],
+      "negative_operands_possible": false,
+      "operators": [
+        "÷"
+      ],
+      "blank": true,
+      "parentheses": false,
+      "default_problems_per_page": 10
+    },
+    {
+      "series": "muldiv",
+      "level": 8,
+      "title": {
+        "en": "Signed division missing number",
+        "zh-CN": "一位整数除法填空"
+      },
+      "rules": {
+        "en": "Divisor and quotient in [-9,9]; derive dividend, then hide divisor or dividend.",
+        "zh-CN": "由 `y, q ∈ [-9, 9]` 反推 `x = y × q`"
+      },
+      "operand_types": [
+        "integer"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "÷"
+      ],
+      "blank": true,
+      "parentheses": false,
+      "default_problems_per_page": 10
+    },
+    {
+      "series": "muldiv",
+      "level": 9,
+      "title": {
+        "en": "Add or subtract two products",
+        "zh-CN": "两组乘法加减"
+      },
+      "rules": {
+        "en": "Four factors in [-9,9]; add or subtract the two products.",
+        "zh-CN": "`x, y, z, w ∈ [-9, 9]`，中间运算符随机为 `+` 或 `-`"
+      },
+      "operand_types": [
+        "integer"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "+",
+        "-",
+        "×"
+      ],
+      "blank": false,
+      "parentheses": false,
+      "default_problems_per_page": 10
+    },
+    {
+      "series": "muldiv",
+      "level": 10,
+      "title": {
+        "en": "Two products missing factor",
+        "zh-CN": "两组乘法加减填空"
+      },
+      "rules": {
+        "en": "Four source factors in [-9,9]; compute the result then hide a factor.",
+        "zh-CN": "源数值取自 `[-9, 9]`，先计算结果，再隐藏一个因数"
+      },
+      "operand_types": [
+        "integer"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "+",
+        "-",
+        "×"
+      ],
+      "blank": true,
+      "parentheses": false,
+      "default_problems_per_page": 10
+    },
+    {
+      "series": "muldiv",
+      "level": 11,
+      "title": {
+        "en": "Product plus or minus quotient",
+        "zh-CN": "乘法与除法加减"
+      },
+      "rules": {
+        "en": "Factors, quotient, and divisor in [-9,9]; derive the dividend. Choose + or - between the product and quotient.",
+        "zh-CN": "源数值取自 `[-9, 9]`；除法部分由 `z = w × q` 反推"
+      },
+      "operand_types": [
+        "integer"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "+",
+        "-",
+        "×",
+        "÷"
+      ],
+      "blank": false,
+      "parentheses": false,
+      "default_problems_per_page": 10
+    },
+    {
+      "series": "muldiv",
+      "level": 12,
+      "title": {
+        "en": "Product and quotient missing number",
+        "zh-CN": "乘除混合填空"
+      },
+      "rules": {
+        "en": "Source factors, quotient, and divisor in [-9,9]; derive the result; hide a multiplier, divisor, or dividend.",
+        "zh-CN": "源数值取自 `[-9, 9]`，先计算结果，再隐藏一个数位"
+      },
+      "operand_types": [
+        "integer"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "+",
+        "-",
+        "×",
+        "÷"
+      ],
+      "blank": true,
+      "parentheses": false,
+      "default_problems_per_page": 10
+    },
+    {
+      "series": "muldiv",
+      "level": 13,
+      "title": {
+        "en": "Multiply a parenthesized sum/difference",
+        "zh-CN": "括号内加减后乘法"
+      },
+      "rules": {
+        "en": "Three operands in [-9,9]; multiply one operand by a parenthesized sum or difference.",
+        "zh-CN": "`x, y, z ∈ [-9, 9]`，括号内运算符随机"
+      },
+      "operand_types": [
+        "integer"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "+",
+        "-",
+        "×"
+      ],
+      "blank": false,
+      "parentheses": true,
+      "default_problems_per_page": 10
+    },
+    {
+      "series": "muldiv",
+      "level": 14,
+      "title": {
+        "en": "Parenthesized missing number",
+        "zh-CN": "括号内加减填空后乘法"
+      },
+      "rules": {
+        "en": "Three source values in [-9,9]; compute (x +/- y)*z, then hide y.",
+        "zh-CN": "`x, y, z ∈ [-9, 9]`，先计算 `(x op y) × z`，再隐藏 `y`"
+      },
+      "operand_types": [
+        "integer"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "+",
+        "-",
+        "×"
+      ],
+      "blank": true,
+      "parentheses": true,
+      "default_problems_per_page": 10
+    },
+    {
+      "series": "muldiv",
+      "level": 15,
+      "title": {
+        "en": "Multiply two parenthesized expressions",
+        "zh-CN": "两组括号相乘"
+      },
+      "rules": {
+        "en": "Four operands in [-9,9]; independently choose + or - within each pair of parentheses.",
+        "zh-CN": "`x, y, z, w ∈ [-9, 9]`，每组括号内运算符随机为 `+` 或 `-`"
+      },
+      "operand_types": [
+        "integer"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "+",
+        "-",
+        "×"
+      ],
+      "blank": false,
+      "parentheses": true,
+      "default_problems_per_page": 10
+    },
+    {
+      "series": "muldiv",
+      "level": 16,
+      "title": {
+        "en": "Two parentheses missing number",
+        "zh-CN": "两组括号相乘填空"
+      },
+      "rules": {
+        "en": "Four source operands in [-9,9]; compute the product of the parentheses, then hide the second left term.",
+        "zh-CN": "`x, y, z, w ∈ [-9, 9]`，先计算结果，再隐藏左侧括号第二个数位"
+      },
+      "operand_types": [
+        "integer"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "+",
+        "-",
+        "×"
+      ],
+      "blank": true,
+      "parentheses": true,
+      "default_problems_per_page": 10
+    },
+    {
+      "series": "muldiv",
+      "level": 17,
+      "title": {
+        "en": "Three signed factors",
+        "zh-CN": "三数连乘"
+      },
+      "rules": {
+        "en": "Three factors in [-9,9].",
+        "zh-CN": "`x, y, z ∈ [-9, 9]`"
+      },
+      "operand_types": [
+        "integer"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "×"
+      ],
+      "blank": false,
+      "parentheses": false,
+      "default_problems_per_page": 10
+    },
+    {
+      "series": "muldiv",
+      "level": 18,
+      "title": {
+        "en": "Three factors missing number",
+        "zh-CN": "三数连乘填空"
+      },
+      "rules": {
+        "en": "Three factors in [-9,9]; compute their product, then hide the second or third factor.",
+        "zh-CN": "三个源因数取自 [-9,9]，先计算乘积，再隐藏第二或第三个因数。"
+      },
+      "operand_types": [
+        "integer"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "×"
+      ],
+      "blank": true,
+      "parentheses": false,
+      "default_problems_per_page": 10
+    },
+    {
+      "series": "muldiv",
+      "level": 19,
+      "title": {
+        "en": "Larger signed multiplication",
+        "zh-CN": "两位范围整数乘法"
+      },
+      "rules": {
+        "en": "Two factors in [-30,30].",
+        "zh-CN": "`x, y ∈ [-30, 30]`"
+      },
+      "operand_types": [
+        "integer"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "×"
+      ],
+      "blank": false,
+      "parentheses": false,
+      "default_problems_per_page": 10
+    },
+    {
+      "series": "muldiv",
+      "level": 20,
+      "title": {
+        "en": "Larger missing factor",
+        "zh-CN": "两位范围整数乘法填空"
+      },
+      "rules": {
+        "en": "Two source factors in [-30,30]; compute their product then hide the second factor.",
+        "zh-CN": "由 `x, y ∈ [-30, 30]` 反推 `z = x × y`"
+      },
+      "operand_types": [
+        "integer"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "×"
+      ],
+      "blank": true,
+      "parentheses": false,
+      "default_problems_per_page": 10
+    },
+    {
+      "series": "muldiv",
+      "level": 21,
+      "title": {
+        "en": "Larger exact division",
+        "zh-CN": "两位范围整除除法"
+      },
+      "rules": {
+        "en": "Divisor and quotient in [-30,30]; derive dividend as their product.",
+        "zh-CN": "由 `y, q ∈ [-30, 30]` 反推 `x = y × q`"
+      },
+      "operand_types": [
+        "integer"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "÷"
+      ],
+      "blank": false,
+      "parentheses": false,
+      "default_problems_per_page": 10
+    },
+    {
+      "series": "muldiv",
+      "level": 22,
+      "title": {
+        "en": "Larger division missing number",
+        "zh-CN": "两位范围除法填空"
+      },
+      "rules": {
+        "en": "Divisor and quotient in [-30,30]; derive dividend then hide divisor or dividend.",
+        "zh-CN": "由 `y, q ∈ [-30, 30]` 反推 `x = y × q`"
+      },
+      "operand_types": [
+        "integer"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "÷"
+      ],
+      "blank": true,
+      "parentheses": false,
+      "default_problems_per_page": 10
+    },
+    {
+      "series": "muldiv",
+      "level": 23,
+      "title": {
+        "en": "Four nonnegative operands",
+        "zh-CN": "非负数四则运算"
+      },
+      "rules": {
+        "en": "Four source operands in [0,30]; choose three distinct operations. If division is selected, adjust the dividend/divisor to make that local pair integral; the whole expression need not be an integer.",
+        "zh-CN": "`x, y, z, w ∈ [0, 30]`，`op ∈ {+, -, ×, ÷}`"
+      },
+      "operand_types": [
+        "integer"
+      ],
+      "negative_operands_possible": false,
+      "operators": [
+        "+",
+        "-",
+        "×",
+        "÷"
+      ],
+      "blank": false,
+      "parentheses": false,
+      "default_problems_per_page": 10
+    },
+    {
+      "series": "muldiv",
+      "level": 24,
+      "title": {
+        "en": "Four signed operands",
+        "zh-CN": "整数四则运算"
+      },
+      "rules": {
+        "en": "Four source operands in [-30,30]; choose three distinct operations. Adjust the local division pair; the whole expression need not be an integer.",
+        "zh-CN": "`x, y, z, w ∈ [-30, 30]`，`op ∈ {+, -, ×, ÷}`"
+      },
+      "operand_types": [
+        "integer"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "+",
+        "-",
+        "×",
+        "÷"
+      ],
+      "blank": false,
+      "parentheses": false,
+      "default_problems_per_page": 10
+    },
+    {
+      "series": "muldiv",
+      "level": 25,
+      "title": {
+        "en": "Four nonnegative operands missing number",
+        "zh-CN": "非负数四则运算填空"
+      },
+      "rules": {
+        "en": "Four source operands in [0,30]; choose three distinct operations, adjust the division pair, compute the exact result, then hide an operand.",
+        "zh-CN": "`x, y, z, w ∈ [0, 30]`，先计算结果，再随机隐藏一个数位"
+      },
+      "operand_types": [
+        "integer"
+      ],
+      "negative_operands_possible": false,
+      "operators": [
+        "+",
+        "-",
+        "×",
+        "÷"
+      ],
+      "blank": true,
+      "parentheses": false,
+      "default_problems_per_page": 10
+    },
+    {
+      "series": "muldiv",
+      "level": 26,
+      "title": {
+        "en": "Four signed operands missing number",
+        "zh-CN": "整数四则运算填空"
+      },
+      "rules": {
+        "en": "Four source operands in [-30,30]; choose three distinct operations, adjust the division pair, compute the exact result, then hide an operand.",
+        "zh-CN": "`x, y, z, w ∈ [-30, 30]`，先计算结果，再随机隐藏一个数位"
+      },
+      "operand_types": [
+        "integer"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "+",
+        "-",
+        "×",
+        "÷"
+      ],
+      "blank": true,
+      "parentheses": false,
+      "default_problems_per_page": 10
+    },
+    {
+      "series": "fraction",
+      "level": 1,
+      "title": {
+        "en": "Nonnegative fraction addition/subtraction",
+        "zh-CN": "非负分数加减"
+      },
+      "rules": {
+        "en": "Two fractions: numerator in [0,20], denominator in [1,20]; choose + or -.",
+        "zh-CN": "`x, y` 为 `frac`，分子取自 `[0, 20]`"
+      },
+      "operand_types": [
+        "fraction"
+      ],
+      "negative_operands_possible": false,
+      "operators": [
+        "+",
+        "-"
+      ],
+      "blank": false,
+      "parentheses": false,
+      "default_problems_per_page": 14
+    },
+    {
+      "series": "fraction",
+      "level": 2,
+      "title": {
+        "en": "Three nonnegative fractions",
+        "zh-CN": "三个非负分数加减"
+      },
+      "rules": {
+        "en": "Three fractions: numerator in [0,20], denominator in [1,20]; use + and - once each.",
+        "zh-CN": "`x, y, z` 为 `frac`，分子取自 `[0, 20]`，`op ∈ {+, -}`"
+      },
+      "operand_types": [
+        "fraction"
+      ],
+      "negative_operands_possible": false,
+      "operators": [
+        "+",
+        "-"
+      ],
+      "blank": false,
+      "parentheses": false,
+      "default_problems_per_page": 14
+    },
+    {
+      "series": "fraction",
+      "level": 3,
+      "title": {
+        "en": "Three fractions missing number",
+        "zh-CN": "三个非负分数加减填空"
+      },
+      "rules": {
+        "en": "Three visible fractions with numerator in [0,20], denominator in [1,20]; the last is the result; insert a left-side blank and use + and - once each.",
+        "zh-CN": "`x, y, z` 为 `frac`，分子取自 `[0, 20]`，填空位置随机 最后一个可见源数作为等号右侧结果，其余可见数和填空位于左侧。"
+      },
+      "operand_types": [
+        "fraction"
+      ],
+      "negative_operands_possible": false,
+      "operators": [
+        "+",
+        "-"
+      ],
+      "blank": true,
+      "parentheses": false,
+      "default_problems_per_page": 14
+    },
+    {
+      "series": "fraction",
+      "level": 4,
+      "title": {
+        "en": "Fraction multiplication",
+        "zh-CN": "分数乘法"
+      },
+      "rules": {
+        "en": "Two fractions: numerator in [-20,20], denominator in [1,20]; multiply.",
+        "zh-CN": "`x, y` 为 `frac`，分子取自 `[-20, 20]`"
+      },
+      "operand_types": [
+        "fraction"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "×"
+      ],
+      "blank": false,
+      "parentheses": false,
+      "default_problems_per_page": 14
+    },
+    {
+      "series": "fraction",
+      "level": 5,
+      "title": {
+        "en": "Fraction division",
+        "zh-CN": "分数除法"
+      },
+      "rules": {
+        "en": "Two fractions: numerator in [-20,20], denominator in [1,20]; divide.",
+        "zh-CN": "`x, y` 为 `frac`，分子取自 `[-20, 20]`"
+      },
+      "operand_types": [
+        "fraction"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "÷"
+      ],
+      "blank": false,
+      "parentheses": false,
+      "default_problems_per_page": 14
+    },
+    {
+      "series": "fraction",
+      "level": 6,
+      "title": {
+        "en": "Three fractions with multiplication/division",
+        "zh-CN": "三个分数乘除"
+      },
+      "rules": {
+        "en": "Three fractions: numerator in [-10,10], denominator in [1,10]; use multiplication and division once each.",
+        "zh-CN": "`x, y, z` 为 `frac`，分子取自 `[-10, 10]`，`op ∈ {×, ÷}`"
+      },
+      "operand_types": [
+        "fraction"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "×",
+        "÷"
+      ],
+      "blank": false,
+      "parentheses": false,
+      "default_problems_per_page": 14
+    },
+    {
+      "series": "fraction",
+      "level": 7,
+      "title": {
+        "en": "Fraction multiplication/division missing number",
+        "zh-CN": "三个分数乘除填空"
+      },
+      "rules": {
+        "en": "Three visible fractions with numerator in [-10,10], denominator in [1,10]; last is the result; insert a blank and use multiplication and division once each.",
+        "zh-CN": "`x, y, z` 为 `frac`，分子取自 `[-10, 10]`，填空位置随机 最后一个可见源数作为等号右侧结果，其余可见数和填空位于左侧。"
+      },
+      "operand_types": [
+        "fraction"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "×",
+        "÷"
+      ],
+      "blank": true,
+      "parentheses": false,
+      "default_problems_per_page": 14
+    },
+    {
+      "series": "fraction",
+      "level": 8,
+      "title": {
+        "en": "Four fractions with mixed operations",
+        "zh-CN": "四个分数四则运算"
+      },
+      "rules": {
+        "en": "Four fractions: numerator in [-10,10], denominator in [1,10]; choose three distinct operations.",
+        "zh-CN": "`x, y, z, w` 为 `frac`，分子取自 `[-10, 10]`，`op ∈ {+, -, ×, ÷}`"
+      },
+      "operand_types": [
+        "fraction"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "+",
+        "-",
+        "×",
+        "÷"
+      ],
+      "blank": false,
+      "parentheses": false,
+      "default_problems_per_page": 12
+    },
+    {
+      "series": "fraction",
+      "level": 9,
+      "title": {
+        "en": "Four fractions missing number",
+        "zh-CN": "四个分数四则运算填空"
+      },
+      "rules": {
+        "en": "Four visible fractions: numerator in [-10,10], denominator in [1,10]; last is the result; insert a blank and choose three distinct operations.",
+        "zh-CN": "`x, y, z, w` 为 `frac`，分子取自 `[-10, 10]`，填空位置随机 最后一个可见源数作为等号右侧结果，其余可见数和填空位于左侧。"
+      },
+      "operand_types": [
+        "fraction"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "+",
+        "-",
+        "×",
+        "÷"
+      ],
+      "blank": true,
+      "parentheses": false,
+      "default_problems_per_page": 12
+    },
+    {
+      "series": "fraction",
+      "level": 10,
+      "title": {
+        "en": "One-decimal-place addition/subtraction",
+        "zh-CN": "一位小数加减"
+      },
+      "rules": {
+        "en": "Two one-decimal-place values in [-20,20]; choose + or -.",
+        "zh-CN": "`x, y` 为 1 位小数，取自 `[-20, 20]`"
+      },
+      "operand_types": [
+        "decimal"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "+",
+        "-"
+      ],
+      "blank": false,
+      "parentheses": false,
+      "default_problems_per_page": 14
+    },
+    {
+      "series": "fraction",
+      "level": 11,
+      "title": {
+        "en": "Mixed numeric types with addition/subtraction",
+        "zh-CN": "混合数值三项加减"
+      },
+      "rules": {
+        "en": "Three independently mixed integer/decimal/fraction operands. Integer range [-10,10]; decimals up to two places in [-10,10]; fraction numerators [-10,10], denominators [1,10]. Use + and - once each.",
+        "zh-CN": "`x, y, z` 为混合数值，源范围 `[-10, 10]`，`op ∈ {+, -}`"
+      },
+      "operand_types": [
+        "integer",
+        "decimal",
+        "fraction"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "+",
+        "-"
+      ],
+      "blank": false,
+      "parentheses": false,
+      "default_problems_per_page": 14
+    },
+    {
+      "series": "fraction",
+      "level": 12,
+      "title": {
+        "en": "Mixed addition/subtraction missing number",
+        "zh-CN": "混合数值三项加减填空"
+      },
+      "rules": {
+        "en": "Three visible mixed values: integers and up-to-two-place decimals in [-20,20], fraction numerators [-20,20] and denominators [1,20]. Last value is the result; insert a blank, use + and - once each.",
+        "zh-CN": "`x, y, z` 为混合数值，源范围 `[-20, 20]`，填空位置随机 最后一个可见源数作为等号右侧结果，其余可见数和填空位于左侧。"
+      },
+      "operand_types": [
+        "integer",
+        "decimal",
+        "fraction"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "+",
+        "-"
+      ],
+      "blank": true,
+      "parentheses": false,
+      "default_problems_per_page": 14
+    },
+    {
+      "series": "fraction",
+      "level": 13,
+      "title": {
+        "en": "One-decimal-place multiplication",
+        "zh-CN": "一位小数乘法"
+      },
+      "rules": {
+        "en": "Two one-decimal-place values in [-20,20]; multiply.",
+        "zh-CN": "`x, y` 为 1 位小数，取自 `[-20, 20]`"
+      },
+      "operand_types": [
+        "decimal"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "×"
+      ],
+      "blank": false,
+      "parentheses": false,
+      "default_problems_per_page": 14
+    },
+    {
+      "series": "fraction",
+      "level": 14,
+      "title": {
+        "en": "Decimal division from factors",
+        "zh-CN": "一位小数整除式除法"
+      },
+      "rules": {
+        "en": "Sample a one-decimal-place divisor and quotient in [-10,10]; derive the dividend (up to two decimal places).",
+        "zh-CN": "先生成 `y, q` 为 1 位小数且取自 `[-10, 10]`，再反推 `x = y × q`"
+      },
+      "operand_types": [
+        "decimal"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "÷"
+      ],
+      "blank": false,
+      "parentheses": false,
+      "default_problems_per_page": 14
+    },
+    {
+      "series": "fraction",
+      "level": 15,
+      "title": {
+        "en": "Mixed numeric types with multiplication/division",
+        "zh-CN": "混合数值乘除"
+      },
+      "rules": {
+        "en": "Three mixed operands: integers and one-place decimals in [-10,10], fraction numerators [-10,10] and denominators [1,10]. Fixed multiplication then division.",
+        "zh-CN": "`x, y, z` 为混合数值，源范围 `[-10, 10]`"
+      },
+      "operand_types": [
+        "integer",
+        "decimal",
+        "fraction"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "×",
+        "÷"
+      ],
+      "blank": false,
+      "parentheses": false,
+      "default_problems_per_page": 14
+    },
+    {
+      "series": "fraction",
+      "level": 16,
+      "title": {
+        "en": "Mixed multiplication/division missing number",
+        "zh-CN": "混合数值乘除填空"
+      },
+      "rules": {
+        "en": "Three visible mixed values: integers and one-place decimals in [-20,20], fraction numerators [-20,20] and denominators [1,20]. Last value is the result; insert a blank; fixed multiplication then division.",
+        "zh-CN": "`x, y, z` 为混合数值，源范围 `[-20, 20]`，填空位置随机 最后一个可见源数作为等号右侧结果，其余可见数和填空位于左侧。"
+      },
+      "operand_types": [
+        "integer",
+        "decimal",
+        "fraction"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "×",
+        "÷"
+      ],
+      "blank": true,
+      "parentheses": false,
+      "default_problems_per_page": 14
+    },
+    {
+      "series": "fraction",
+      "level": 17,
+      "title": {
+        "en": "Four mixed numeric operands",
+        "zh-CN": "混合数值四则运算"
+      },
+      "rules": {
+        "en": "Four mixed operands: integers and up-to-two-place decimals in [-10,10], fraction numerators [-10,10] and denominators [1,10]. Choose three distinct operations.",
+        "zh-CN": "`x, y, z, w` 为混合数值，源范围 `[-10, 10]`，`op ∈ {+, -, ×, ÷}`"
+      },
+      "operand_types": [
+        "integer",
+        "decimal",
+        "fraction"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "+",
+        "-",
+        "×",
+        "÷"
+      ],
+      "blank": false,
+      "parentheses": false,
+      "default_problems_per_page": 12
+    },
+    {
+      "series": "fraction",
+      "level": 18,
+      "title": {
+        "en": "Four mixed operands missing number",
+        "zh-CN": "混合数值四则运算填空"
+      },
+      "rules": {
+        "en": "Four visible mixed values: integers and up-to-two-place decimals in [-10,10], fraction numerators [-10,10] and denominators [1,10]. Last value is the result; insert a blank and choose three distinct operations.",
+        "zh-CN": "`x, y, z, w` 为混合数值，源范围 `[-10, 10]`，填空位置随机 最后一个可见源数作为等号右侧结果，其余可见数和填空位于左侧。"
+      },
+      "operand_types": [
+        "integer",
+        "decimal",
+        "fraction"
+      ],
+      "negative_operands_possible": true,
+      "operators": [
+        "+",
+        "-",
+        "×",
+        "÷"
+      ],
+      "blank": true,
+      "parentheses": false,
+      "default_problems_per_page": 12
+    }
+  ]
+}

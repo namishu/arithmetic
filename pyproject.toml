@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "namishu-arithmetic"
+version = "0.1.0"
+description = "Printable arithmetic worksheets for integers, fractions, and decimals."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{name = "Namishu"}]
+dependencies = ["numpy>=1.24", "PyYAML>=6.0", "reportlab>=4.0"]
+
+[project.scripts]
+arithmetic = "namishu_arithmetic.cli:main"
+
+[dependency-groups]
+dev = ["pytest>=8.0", "ruff>=0.11", "pypdf>=5.0"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+namishu_arithmetic = ["data/*.yaml", "data/*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 120
+
+[tool.ruff.lint]
+select = ["B", "C4", "E4", "E501", "E7", "E9", "F", "I", "RUF012", "SIM", "UP"]

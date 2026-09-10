@@ -1,0 +1,9 @@
+# Layout and capacity only; this does not change operand ranges.
+problems_per_page:
+  default: 12
+layout:
+  margin:
+    left_mm: 20
+    right_mm: 20
+  typography:
+    line_spacing_ratio: 1.0

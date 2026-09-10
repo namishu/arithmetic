@@ -1,0 +1,36 @@
+layout:
+  page:
+    width_mm: 210
+    height_mm: 297
+
+  margin:
+    left_mm: 25
+    right_mm: 20
+    top_mm: 25
+    bottom_mm: 25
+
+  header:
+    font_size_pt: 9
+    separator_width_pt: 0.5
+    separator_offset_y_mm: 5
+    offset_y_mm: 2
+
+  footer:
+    font_size_pt: 9
+    offset_y_mm: 10
+
+  typography:
+    font_name: Helvetica
+    font_path: null
+    line_spacing_ratio: 1.0
+    text_color: "#111111"
+    meta_text_color: "#4B5563"
+
+problems_per_page:
+  default: 10
+  fraction: 14
+
+diversity:
+  candidate_multiplier: 8
+  max_same_leading_operand_per_page: 2
+  max_special_operand_per_page: 3
