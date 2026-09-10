@@ -34,15 +34,31 @@ problems per page, or fix the random seed to generate the same set of questions 
 
 ## Installation
 
-Requirements: **Python 3.10+ and uv**.
+Requirements: **Python 3.10+**. Install with either uv or pip.
+
+### With uv
+
+Use [uv](https://docs.astral.sh/uv/getting-started/installation/) to install into an isolated tool environment:
 
 ```bash
-git clone https://github.com/namishu/arithmetic.git
-cd arithmetic
-uv sync
+uv tool install namishu-arithmetic
 ```
 
-Run the commands below from the project directory.
+Upgrade with `uv tool upgrade namishu-arithmetic`.
+If uv reports that its executable directory is missing from PATH, run `uv tool update-shell` and reopen your terminal.
+
+### With pip
+
+Install into your current Python environment:
+
+```bash
+python -m pip install namishu-arithmetic
+```
+
+Upgrade with `python -m pip install --upgrade namishu-arithmetic`.
+
+Both methods provide the `arithmetic` command. Check the version with `arithmetic --version`;
+PDFs are saved to the output path you specify.
 
 ## Quick start
 
@@ -62,7 +78,7 @@ For example, `addsub` level 1 adds two integers from 0 to 10; sums may reach 20.
 Generate **five pages of addition practice**, saved to `worksheets/addition.pdf`:
 
 ```bash
-uv run arithmetic generate --series addsub --level 1 --pages 5 --output worksheets/addition.pdf
+arithmetic generate --series addsub --level 1 --pages 5 --output worksheets/addition.pdf
 ```
 
 `generate` creates a PDF. The four arguments above specify:
@@ -82,17 +98,24 @@ You can also add these options:
 |---|---|
 | `--seed 42` | Reproduce problem content with the same program and dependency versions; omitted seeds are randomly chosen and printed |
 | `--disallow-zero-denominator` | Exclude expressions with a zero denominator or divisor; allowed by default |
-| `--config examples/override.yaml` | Load layout and problems-per-page settings from a YAML file |
+| `--config worksheet.yaml` | Load layout and problems-per-page settings from a YAML file |
 | `--force` | Replace an existing file; existing files cause an error by default |
 | `--json` | Return file locations, page counts, exercises, seeds, and other generation details as JSON for programs or agents |
 
 For example, generate **two pages of division practice with no division by zero and a fixed seed**:
 
 ```bash
-uv run arithmetic generate --series muldiv --level 5 --pages 2 --seed 42 --disallow-zero-denominator --output worksheets/division.pdf
+arithmetic generate --series muldiv --level 5 --pages 2 --seed 42 --disallow-zero-denominator --output worksheets/division.pdf
 ```
 
-You can also give the repository URL or local folder to an agent that can run commands, with a request:
+For agents or occasional runs, use `uvx` to prepare the execution environment and run the command:
+
+```bash
+uvx --from namishu-arithmetic==1.0.0 arithmetic generate --series muldiv --level 1 --pages 5 --output worksheets/multiplication.pdf --json
+```
+
+`--from` selects the PyPI package and version; `arithmetic` is its command name.
+You can also give an agent the project link and describe what you need:
 
 > Use this project to generate five pages of basic multiplication practice without negative operands,
 > saved in worksheets/. Verify the PDF and provide a file link and the generation settings.
@@ -104,8 +127,8 @@ You can also give the repository URL or local folder to an agent that can run co
 Show every series, level, and exercise name. Use `--series` to filter by series, or `--json` for JSON output.
 
 ```bash
-uv run arithmetic list
-uv run arithmetic list --series muldiv
+arithmetic list
+arithmetic list --series muldiv
 ```
 
 ### Inspect a level: `describe`
@@ -114,7 +137,7 @@ Show operand ranges, operation rules, examples, and problems per page for one le
 Both `--series` and `--level` are required; `--json` returns JSON output.
 
 ```bash
-uv run arithmetic describe --series muldiv --level 5
+arithmetic describe --series muldiv --level 5
 ```
 
 ### Generate a complete collection: `generate --all`
@@ -122,7 +145,7 @@ uv run arithmetic describe --series muldiv --level 5
 Create a separate PDF for each of the 68 levels. This command generates one page per level:
 
 ```bash
-uv run arithmetic generate --all --pages 1 --output-dir worksheets/collection
+arithmetic generate --all --pages 1 --output-dir worksheets/collection
 ```
 
 `--all` selects every exercise; `--output-dir` sets the root directory, defaulting to `worksheets`.
@@ -133,9 +156,9 @@ It cannot be combined with `--series`, `--level`, or `--output`. `--output-dir` 
 ### Help and version
 
 ```bash
-uv run arithmetic --help
-uv run arithmetic generate --help
-uv run arithmetic --version
+arithmetic --help
+arithmetic generate --help
+arithmetic --version
 ```
 
 `list` and `describe` also accept `--help`.
@@ -167,12 +190,12 @@ layout:
 ```
 
 ```bash
-uv run arithmetic generate --series addsub --level 1 --config worksheet.yaml
+arithmetic generate --series addsub --level 1 --config worksheet.yaml
 ```
 
 `default` sets the integer series capacity; use `fraction` alongside it to set the fraction series capacity.
 The four levels with a fixed 12-question capacity retain that value.
-See [examples/override.yaml](examples/override.yaml) for a ready-to-use file.
+You can also download the [example configuration](examples/override.yaml) and pass its local path to `--config`.
 
 ## License
 

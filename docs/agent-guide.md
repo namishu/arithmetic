@@ -5,12 +5,15 @@ read [README.md](../README.md). For available exercises, use the [level catalog]
 
 ## 1. Prepare
 
-You need shell execution, Python 3.10+, dependency installation, and access to
-output files. Inspect the existing environment first. From the repository root,
-use `uv sync` and run `uv run arithmetic --help` to verify installation.
-Never claim completion if execution or file delivery is unavailable.
+You need shell execution, uv, and access to output files. Use the published PyPI package:
 
-Prefix the command examples below with `uv run`.
+```bash
+uvx --from namishu-arithmetic==1.0.0 arithmetic --help
+```
+
+In the examples below, replace `arithmetic` with `uvx --from namishu-arithmetic==1.0.0 arithmetic`.
+For an existing source checkout, use `uv sync` and prefix commands with `uv run` instead.
+Never claim completion if execution or file delivery is unavailable.
 
 ## 2. Understand and select
 

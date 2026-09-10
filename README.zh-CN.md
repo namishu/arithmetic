@@ -32,15 +32,31 @@ Namishu Arithmetic 是一个数学口算练习纸生成工具，适合家长准�
 
 ## 安装
 
-环境：**Python 3.10+ 和 uv**。
+环境：**Python 3.10+**。选择 uv 或 pip 安装。
+
+### 使用 uv
+
+通过 [uv](https://docs.astral.sh/uv/getting-started/installation/) 安装到独立的工具环境：
 
 ```bash
-git clone https://github.com/namishu/arithmetic.git
-cd arithmetic
-uv sync
+uv tool install namishu-arithmetic
 ```
 
-以下命令均在项目目录执行。
+升级：`uv tool upgrade namishu-arithmetic`。
+如果 uv 提示命令目录未加入 PATH，执行 `uv tool update-shell` 后重新打开终端。
+
+### 使用 pip
+
+安装到当前 Python 环境：
+
+```bash
+python -m pip install namishu-arithmetic
+```
+
+升级：`python -m pip install --upgrade namishu-arithmetic`。
+
+两种方式安装后均可使用 `arithmetic` 命令。用 `arithmetic --version` 查看版本，
+生成的 PDF 保存到指定的输出路径。
 
 ## 快速上手
 
@@ -60,7 +76,7 @@ uv sync
 生成 **5 页加法练习**，保存到 `worksheets/addition.pdf`：
 
 ```bash
-uv run arithmetic generate --series addsub --level 1 --pages 5 --output worksheets/addition.pdf
+arithmetic generate --series addsub --level 1 --pages 5 --output worksheets/addition.pdf
 ```
 
 `generate` 用于生成 PDF。上面命令的四个参数分别是：
@@ -80,17 +96,24 @@ uv run arithmetic generate --series addsub --level 1 --pages 5 --output workshee
 |---|---|
 | `--seed 42` | 固定随机种子，在相同程序和依赖版本下复现题目；省略时随机选择并显示种子 |
 | `--disallow-zero-denominator` | 排除分母或除数为 0 的算式；默认允许 |
-| `--config examples/override.yaml` | 从 YAML 文件读取版式和每页题数配置 |
+| `--config worksheet.yaml` | 从 YAML 文件读取版式和每页题数配置 |
 | `--force` | 覆盖同名文件；默认遇到已有文件会报错 |
 | `--json` | 以 JSON 返回生成文件的位置、页数、题型、种子等信息，供程序或 Agent 读取 |
 
 例如，生成 **2 页除法练习，排除除零，并固定种子**：
 
 ```bash
-uv run arithmetic generate --series muldiv --level 5 --pages 2 --seed 42 --disallow-zero-denominator --output worksheets/division.pdf
+arithmetic generate --series muldiv --level 5 --pages 2 --seed 42 --disallow-zero-denominator --output worksheets/division.pdf
 ```
 
-也可以将仓库地址或本地目录交给能执行命令的 Agent，直接描述需求：
+Agent 或临时运行可使用 `uvx`，由 uv 准备运行环境：
+
+```bash
+uvx --from namishu-arithmetic==1.0.0 arithmetic generate --series muldiv --level 1 --pages 5 --output worksheets/multiplication.pdf --json
+```
+
+`--from` 指定 PyPI 包和版本，后面的 `arithmetic` 是命令名。
+也可以给能执行命令的 Agent 发送项目链接，并直接描述需求：
 
 > 请用这个项目生成 5 页不含负操作数的基础乘法练习，保存到 worksheets 文件夹。
 > 检查 PDF，并给出文件链接和生成参数。
@@ -102,8 +125,8 @@ uv run arithmetic generate --series muldiv --level 5 --pages 2 --seed 42 --disal
 列出所有系列、级别和题型名称；`--series` 可限定系列，`--json` 可返回 JSON。
 
 ```bash
-uv run arithmetic list
-uv run arithmetic list --series muldiv
+arithmetic list
+arithmetic list --series muldiv
 ```
 
 ### 查看级别详情：`describe`
@@ -112,7 +135,7 @@ uv run arithmetic list --series muldiv
 `--series` 和 `--level` 必填，`--json` 可返回 JSON。
 
 ```bash
-uv run arithmetic describe --series muldiv --level 5
+arithmetic describe --series muldiv --level 5
 ```
 
 ### 生成完整题集：`generate --all`
@@ -120,7 +143,7 @@ uv run arithmetic describe --series muldiv --level 5
 为全部 68 个级别分别生成 PDF。下面的命令每个级别生成 1 页：
 
 ```bash
-uv run arithmetic generate --all --pages 1 --output-dir worksheets/collection
+arithmetic generate --all --pages 1 --output-dir worksheets/collection
 ```
 
 `--all` 选择全部题型，`--output-dir` 指定根目录，默认是 `worksheets`。
@@ -131,9 +154,9 @@ uv run arithmetic generate --all --pages 1 --output-dir worksheets/collection
 ### 帮助与版本
 
 ```bash
-uv run arithmetic --help
-uv run arithmetic generate --help
-uv run arithmetic --version
+arithmetic --help
+arithmetic generate --help
+arithmetic --version
 ```
 
 `list` 和 `describe` 也支持 `--help`。
@@ -165,12 +188,12 @@ layout:
 ```
 
 ```bash
-uv run arithmetic generate --series addsub --level 1 --config worksheet.yaml
+arithmetic generate --series addsub --level 1 --config worksheet.yaml
 ```
 
 `default` 设置整数系列的每页题数；在同一层添加 `fraction` 可设置分数系列的每页题数。
 上述四个固定为 12 题的级别保持原值。
-也可直接使用 [examples/override.yaml](examples/override.yaml)。
+也可下载[配置示例](examples/override.yaml)，通过 `--config` 指定本地文件路径。
 
 ## 许可证
 
