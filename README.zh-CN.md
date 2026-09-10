@@ -5,7 +5,7 @@
 <p align="center">
   <a href="pyproject.toml"><img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=flat&amp;logo=python&amp;logoColor=white" alt="Python 3.10+"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-22A06B?style=flat" alt="License: MIT"></a>
-  <a href="examples/addition.pdf"><img src="https://img.shields.io/badge/PDF-A4-E05D44?style=flat" alt="PDF: A4"></a>
+  <a href="examples/addition.pdf"><img src="https://img.shields.io/badge/PDF-A4_portrait-E05D44?style=flat" alt="PDF: A4 portrait"></a>
 </p>
 
 <p align="center"><a href="README.md">English</a> · <strong>简体中文</strong></p>
