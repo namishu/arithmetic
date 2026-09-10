@@ -1,0 +1,412 @@
+{
+  "levels": [
+    {
+      "series": "addsub",
+      "level": 1,
+      "title": "两数加法",
+      "rules": "`x, y ∈ [0, 10]`"
+    },
+    {
+      "series": "addsub",
+      "level": 2,
+      "title": "两数减法",
+      "rules": "由 `m, n ∈ [0, 10]` 反推为 `(m+n) - m`"
+    },
+    {
+      "series": "addsub",
+      "level": 3,
+      "title": "两数加减混合",
+      "rules": "混合 level 1 和 level 2"
+    },
+    {
+      "series": "addsub",
+      "level": 4,
+      "title": "三数连加",
+      "rules": "`x, y, z ∈ [0, 10]`"
+    },
+    {
+      "series": "addsub",
+      "level": 5,
+      "title": "三数连减",
+      "rules": "由 `m, n, p ∈ [0, 10]` 反推为 `(m+n+p) - m - n`"
+    },
+    {
+      "series": "addsub",
+      "level": 6,
+      "title": "三数加减基础混合",
+      "rules": "混合 level 4 和 level 5"
+    },
+    {
+      "series": "addsub",
+      "level": 7,
+      "title": "三数加减混合",
+      "rules": "源数值取自 `[0, 10]`，部分题型通过反推生成"
+    },
+    {
+      "series": "addsub",
+      "level": 8,
+      "title": "含负数被减数",
+      "rules": "`x ∈ [-15, 15]`，`y ∈ [0, 15]`"
+    },
+    {
+      "series": "addsub",
+      "level": 9,
+      "title": "减法与负数加法",
+      "rules": "变体一：`x, y ∈ [0, 15]`；变体二：`x ∈ [-15, -1]`、`y ∈ [0, 15]`"
+    },
+    {
+      "series": "addsub",
+      "level": 10,
+      "title": "负数参与的两数加减",
+      "rules": "负数变体中 `x ∈ [-15, -1]`、`y ∈ [0, 15]`；另有 `x, y ∈ [0, 15]` 的减法"
+    },
+    {
+      "series": "addsub",
+      "level": 11,
+      "title": "含负数的三数连减",
+      "rules": "`x ∈ [-10, 10]`，`y, z ∈ [0, 10]`"
+    },
+    {
+      "series": "addsub",
+      "level": 12,
+      "title": "三数加减",
+      "rules": "`x, y, z ∈ [0, 10]`，`op ∈ {+, -}`，两个运算符不重复"
+    },
+    {
+      "series": "addsub",
+      "level": 13,
+      "title": "负数开头的三数加减",
+      "rules": "`x ∈ [-10, -1]`，`y, z ∈ [0, 10]`，`op ∈ {+, -}`，两个运算符不重复"
+    },
+    {
+      "series": "addsub",
+      "level": 14,
+      "title": "正数与负数加减",
+      "rules": "`x ∈ [0, 20]`，`y ∈ [-20, -1]`"
+    },
+    {
+      "series": "addsub",
+      "level": 15,
+      "title": "两个负数加减",
+      "rules": "`x, y ∈ [-20, -1]`"
+    },
+    {
+      "series": "addsub",
+      "level": 16,
+      "title": "三数连加，含负数",
+      "rules": "`x, y, z ∈ [-15, 15]`"
+    },
+    {
+      "series": "addsub",
+      "level": 17,
+      "title": "加法填空",
+      "rules": "`x, y ∈ [0, 40]`，填空位置随机"
+    },
+    {
+      "series": "addsub",
+      "level": 18,
+      "title": "减法填空",
+      "rules": "`x, y ∈ [0, 40]`，填空位置随机"
+    },
+    {
+      "series": "addsub",
+      "level": 19,
+      "title": "加减填空",
+      "rules": "`x, y ∈ [0, 40]`，`op ∈ {+, -}`，填空位置随机"
+    },
+    {
+      "series": "addsub",
+      "level": 20,
+      "title": "加减填空进阶",
+      "rules": "`x, y ∈ [0, 30]`，`op ∈ {+, -}`，填空位置随机"
+    },
+    {
+      "series": "addsub",
+      "level": 21,
+      "title": "固定右侧填空",
+      "rules": "`x ∈ [-30, 30]`，`y ∈ [0, 30]`，运算符随机"
+    },
+    {
+      "series": "addsub",
+      "level": 22,
+      "title": "三数加减填空",
+      "rules": "`x, y, z ∈ [0, 30]`，`op ∈ {+, -}`，填空位置随机 最后一个可见源数作为等号右侧结果，其余可见数和填空位于左侧。"
+    },
+    {
+      "series": "addsub",
+      "level": 23,
+      "title": "负数开头的三数填空",
+      "rules": "`x ∈ [-30, 30]`，`y, z ∈ [0, 30]`，填空位置随机 最后一个可见源数作为等号右侧结果，其余可见数和填空位于左侧。"
+    },
+    {
+      "series": "addsub",
+      "level": 24,
+      "title": "含负数的三数加减填空",
+      "rules": "`x, y, z ∈ [-30, 30]`，`op ∈ {+, -}`，填空位置随机 最后一个可见源数作为等号右侧结果，其余可见数和填空位于左侧。"
+    },
+    {
+      "series": "muldiv",
+      "level": 1,
+      "title": "一位非负数乘法",
+      "rules": "`x, y ∈ [0, 9]`"
+    },
+    {
+      "series": "muldiv",
+      "level": 2,
+      "title": "一位整数乘法",
+      "rules": "`x, y ∈ [-9, 9]`"
+    },
+    {
+      "series": "muldiv",
+      "level": 3,
+      "title": "一位非负数乘法填空",
+      "rules": "由 `x, y ∈ [0, 9]` 反推 `z = x × y`"
+    },
+    {
+      "series": "muldiv",
+      "level": 4,
+      "title": "一位整数乘法填空",
+      "rules": "由 `x, y ∈ [-9, 9]` 反推 `z = x × y`"
+    },
+    {
+      "series": "muldiv",
+      "level": 5,
+      "title": "一位非负数除法",
+      "rules": "由 `y, q ∈ [0, 9]` 反推 `x = y × q`"
+    },
+    {
+      "series": "muldiv",
+      "level": 6,
+      "title": "一位整数除法",
+      "rules": "由 `y, q ∈ [-9, 9]` 反推 `x = y × q`"
+    },
+    {
+      "series": "muldiv",
+      "level": 7,
+      "title": "一位非负数除法填空",
+      "rules": "由 `y, q ∈ [0, 9]` 反推 `x = y × q`"
+    },
+    {
+      "series": "muldiv",
+      "level": 8,
+      "title": "一位整数除法填空",
+      "rules": "由 `y, q ∈ [-9, 9]` 反推 `x = y × q`"
+    },
+    {
+      "series": "muldiv",
+      "level": 9,
+      "title": "两组乘法加减",
+      "rules": "`x, y, z, w ∈ [-9, 9]`，中间运算符随机为 `+` 或 `-`"
+    },
+    {
+      "series": "muldiv",
+      "level": 10,
+      "title": "两组乘法加减填空",
+      "rules": "源数值取自 `[-9, 9]`，先计算结果，再隐藏一个因数"
+    },
+    {
+      "series": "muldiv",
+      "level": 11,
+      "title": "乘法与除法加减",
+      "rules": "源数值取自 `[-9, 9]`；除法部分由 `z = w × q` 反推"
+    },
+    {
+      "series": "muldiv",
+      "level": 12,
+      "title": "乘除混合填空",
+      "rules": "源数值取自 `[-9, 9]`，先计算结果，再隐藏一个数位"
+    },
+    {
+      "series": "muldiv",
+      "level": 13,
+      "title": "括号内加减后乘法",
+      "rules": "`x, y, z ∈ [-9, 9]`，括号内运算符随机"
+    },
+    {
+      "series": "muldiv",
+      "level": 14,
+      "title": "括号内加减填空后乘法",
+      "rules": "`x, y, z ∈ [-9, 9]`，先计算 `(x op y) × z`，再隐藏 `y`"
+    },
+    {
+      "series": "muldiv",
+      "level": 15,
+      "title": "两组括号相乘",
+      "rules": "`x, y, z, w ∈ [-9, 9]`，每组括号内运算符随机为 `+` 或 `-`"
+    },
+    {
+      "series": "muldiv",
+      "level": 16,
+      "title": "两组括号相乘填空",
+      "rules": "`x, y, z, w ∈ [-9, 9]`，先计算结果，再隐藏左侧括号第二个数位"
+    },
+    {
+      "series": "muldiv",
+      "level": 17,
+      "title": "三数连乘",
+      "rules": "`x, y, z ∈ [-9, 9]`"
+    },
+    {
+      "series": "muldiv",
+      "level": 18,
+      "title": "三数连乘填空",
+      "rules": "三个源因数取自 [-9,9]，先计算乘积，再隐藏第二或第三个因数。"
+    },
+    {
+      "series": "muldiv",
+      "level": 19,
+      "title": "两位范围整数乘法",
+      "rules": "`x, y ∈ [-30, 30]`"
+    },
+    {
+      "series": "muldiv",
+      "level": 20,
+      "title": "两位范围整数乘法填空",
+      "rules": "由 `x, y ∈ [-30, 30]` 反推 `z = x × y`"
+    },
+    {
+      "series": "muldiv",
+      "level": 21,
+      "title": "两位范围整除除法",
+      "rules": "由 `y, q ∈ [-30, 30]` 反推 `x = y × q`"
+    },
+    {
+      "series": "muldiv",
+      "level": 22,
+      "title": "两位范围除法填空",
+      "rules": "由 `y, q ∈ [-30, 30]` 反推 `x = y × q`"
+    },
+    {
+      "series": "muldiv",
+      "level": 23,
+      "title": "非负数四则运算",
+      "rules": "`x, y, z, w ∈ [0, 30]`，`op ∈ {+, -, ×, ÷}`"
+    },
+    {
+      "series": "muldiv",
+      "level": 24,
+      "title": "整数四则运算",
+      "rules": "`x, y, z, w ∈ [-30, 30]`，`op ∈ {+, -, ×, ÷}`"
+    },
+    {
+      "series": "muldiv",
+      "level": 25,
+      "title": "非负数四则运算填空",
+      "rules": "`x, y, z, w ∈ [0, 30]`，先计算结果，再随机隐藏一个数位"
+    },
+    {
+      "series": "muldiv",
+      "level": 26,
+      "title": "整数四则运算填空",
+      "rules": "`x, y, z, w ∈ [-30, 30]`，先计算结果，再随机隐藏一个数位"
+    },
+    {
+      "series": "fraction",
+      "level": 1,
+      "title": "非负分数加减",
+      "rules": "`x, y` 为 `frac`，分子取自 `[0, 20]`"
+    },
+    {
+      "series": "fraction",
+      "level": 2,
+      "title": "三个非负分数加减",
+      "rules": "`x, y, z` 为 `frac`，分子取自 `[0, 20]`，`op ∈ {+, -}`"
+    },
+    {
+      "series": "fraction",
+      "level": 3,
+      "title": "三个非负分数加减填空",
+      "rules": "`x, y, z` 为 `frac`，分子取自 `[0, 20]`，填空位置随机 最后一个可见源数作为等号右侧结果，其余可见数和填空位于左侧。"
+    },
+    {
+      "series": "fraction",
+      "level": 4,
+      "title": "分数乘法",
+      "rules": "`x, y` 为 `frac`，分子取自 `[-20, 20]`"
+    },
+    {
+      "series": "fraction",
+      "level": 5,
+      "title": "分数除法",
+      "rules": "`x, y` 为 `frac`，分子取自 `[-20, 20]`"
+    },
+    {
+      "series": "fraction",
+      "level": 6,
+      "title": "三个分数乘除",
+      "rules": "`x, y, z` 为 `frac`，分子取自 `[-10, 10]`，`op ∈ {×, ÷}`"
+    },
+    {
+      "series": "fraction",
+      "level": 7,
+      "title": "三个分数乘除填空",
+      "rules": "`x, y, z` 为 `frac`，分子取自 `[-10, 10]`，填空位置随机 最后一个可见源数作为等号右侧结果，其余可见数和填空位于左侧。"
+    },
+    {
+      "series": "fraction",
+      "level": 8,
+      "title": "四个分数四则运算",
+      "rules": "`x, y, z, w` 为 `frac`，分子取自 `[-10, 10]`，`op ∈ {+, -, ×, ÷}`"
+    },
+    {
+      "series": "fraction",
+      "level": 9,
+      "title": "四个分数四则运算填空",
+      "rules": "`x, y, z, w` 为 `frac`，分子取自 `[-10, 10]`，填空位置随机 最后一个可见源数作为等号右侧结果，其余可见数和填空位于左侧。"
+    },
+    {
+      "series": "fraction",
+      "level": 10,
+      "title": "一位小数加减",
+      "rules": "`x, y` 为 1 位小数，取自 `[-20, 20]`"
+    },
+    {
+      "series": "fraction",
+      "level": 11,
+      "title": "混合数值三项加减",
+      "rules": "`x, y, z` 为混合数值，源范围 `[-10, 10]`，`op ∈ {+, -}`"
+    },
+    {
+      "series": "fraction",
+      "level": 12,
+      "title": "混合数值三项加减填空",
+      "rules": "`x, y, z` 为混合数值，源范围 `[-20, 20]`，填空位置随机 最后一个可见源数作为等号右侧结果，其余可见数和填空位于左侧。"
+    },
+    {
+      "series": "fraction",
+      "level": 13,
+      "title": "一位小数乘法",
+      "rules": "`x, y` 为 1 位小数，取自 `[-20, 20]`"
+    },
+    {
+      "series": "fraction",
+      "level": 14,
+      "title": "一位小数整除式除法",
+      "rules": "先生成 `y, q` 为 1 位小数且取自 `[-10, 10]`，再反推 `x = y × q`"
+    },
+    {
+      "series": "fraction",
+      "level": 15,
+      "title": "混合数值乘除",
+      "rules": "`x, y, z` 为混合数值，源范围 `[-10, 10]`"
+    },
+    {
+      "series": "fraction",
+      "level": 16,
+      "title": "混合数值乘除填空",
+      "rules": "`x, y, z` 为混合数值，源范围 `[-20, 20]`，填空位置随机 最后一个可见源数作为等号右侧结果，其余可见数和填空位于左侧。"
+    },
+    {
+      "series": "fraction",
+      "level": 17,
+      "title": "混合数值四则运算",
+      "rules": "`x, y, z, w` 为混合数值，源范围 `[-10, 10]`，`op ∈ {+, -, ×, ÷}`"
+    },
+    {
+      "series": "fraction",
+      "level": 18,
+      "title": "混合数值四则运算填空",
+      "rules": "`x, y, z, w` 为混合数值，源范围 `[-10, 10]`，填空位置随机 最后一个可见源数作为等号右侧结果，其余可见数和填空位于左侧。"
+    }
+  ]
+}

@@ -20,8 +20,6 @@ layout:
     offset_y_mm: 10
 
   typography:
-    font_name: Helvetica
-    font_path: null
     line_spacing_ratio: 1.0
     text_color: "#111111"
     meta_text_color: "#4B5563"

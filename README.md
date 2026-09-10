@@ -1,133 +1,180 @@
-# Namishu Arithmetic
+<h1 align="center">Namishu Arithmetic</h1>
 
-Printable arithmetic worksheets for integers, fractions, and decimals.
+<p align="center">Printable arithmetic worksheets for integers, fractions, and decimals.</p>
 
-[简体中文](README.zh-CN.md)
+<p align="center">
+  <a href="pyproject.toml"><img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=flat&amp;logo=python&amp;logoColor=white" alt="Python 3.10+"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-22A06B?style=flat" alt="License: MIT"></a>
+  <a href="examples/addition.pdf"><img src="https://img.shields.io/badge/PDF-A4-E05D44?style=flat" alt="PDF: A4"></a>
+</p>
 
-Generate A4 PDFs for addition, subtraction, multiplication, division, mixed
-operations, parentheses, and missing-number practice. Choose from **68 levels**
-across three series. Worksheets are generated locally; no account or API key is required.
+<p align="center"><strong>English</strong> · <a href="README.zh-CN.md">简体中文</a></p>
 
-![An addition worksheet](examples/addition.png)
+<p align="center">
+  <a href="#quick-start">Quick start</a> · <a href="docs/levels.md">Level catalog</a> ·
+  <a href="#other-commands">Commands</a> · <a href="docs/agent-guide.md">Agent guide</a>
+</p>
+
+---
+
+Namishu Arithmetic creates printable arithmetic worksheets for parents preparing daily practice,
+teachers assigning classwork, and learners practicing specific operations. Choose an exercise type
+and page count to get an A4 PDF ready to print, saving the time spent writing questions and arranging
+them on a page. Run it again whenever you need a fresh set of questions.
+
+With **68 levels across 3 series**, the project covers addition, subtraction, multiplication, and division
+with integers, fractions, and decimals, including negative numbers, parentheses, mixed operations,
+and missing-number exercises. Choose a preset for your practice goal, adjust the layout and number of
+problems per page, or fix the random seed to generate the same set of questions again.
+
+<p align="center">
+  Sample PDFs: <a href="examples/addition.pdf">Addition</a> · <a href="examples/multiplication.pdf">Multiplication</a> ·
+  <a href="examples/fractions.pdf">Fractions</a> · <a href="examples/decimals.pdf">Decimals</a>
+</p>
+
+## Installation
+
+Requirements: **Python 3.10+ and uv**.
+
+```bash
+git clone https://github.com/namishu/arithmetic.git
+cd arithmetic
+uv sync
+```
+
+Run the commands below from the project directory.
 
 ## Quick start
 
-Requirements: **Python 3.10+**. Runtime dependencies: NumPy, PyYAML, and ReportLab.
-Default configuration is included; PDF standard Helvetica requires no font files.
-Python code is portable across
-macOS, Linux, and Windows; see the CI workflow for the verification matrix.
+Choose a series and level to generate a worksheet:
 
-Download or clone this repository, then open a terminal in its directory:
-
-```bash
-python -m venv .venv
-```
-
-Activate the environment on macOS/Linux:
-
-```bash
-source .venv/bin/activate
-```
-
-On Windows PowerShell:
-
-```powershell
-.venv\Scripts\Activate.ps1
-```
-
-Install and generate your first worksheet:
-
-```bash
-python -m pip install .
-arithmetic generate --series addsub --level 1 --pages 5 --output worksheets/addition.pdf
-```
-
-The output path is printed after generation. Open that file with any PDF viewer
-and print at actual size (A4). Level 1 uses operands from 0 to 10; **sums may reach 20**.
-
-If you use `uv`, run `uv sync` followed by `uv run arithmetic generate` with the
-same options. The project does not need to be published to PyPI to use either path.
-
-## Let an agent generate worksheets
-
-You do not need to write code if your agent can download this repository, run
-shell commands, install dependencies, and give you access to the resulting files.
-A chat-only assistant without those tools cannot perform the complete workflow.
-
-Give a capable agent the repository URL or local folder and this request:
-
-> Read README.md and AGENTS.md in this project. Set up the environment and generate
-> five pages of basic multiplication practice without negative operands. Save the
-> PDF in worksheets/. Use the documented series and levels, verify the PDF, and
-> give me the file location and the settings you used.
-
-Describe the operations, number types, whether negative operands are allowed,
-and how many pages you want. The agent uses the [level catalog](docs/levels.md)
-and [agent guide](docs/agent-guide.md) to choose a supported exercise.
-
-For immediate use, download an example: [addition](examples/addition.pdf),
-[multiplication](examples/multiplication.pdf), [fractions](examples/fractions.pdf),
-[decimals](examples/decimals.pdf).
-
-## Choose exercises
-
-| Series | Levels | Content |
-|---|---:|---|
+| Series (`--series`) | Levels (`--level`) | Content |
+|---|---|---|
 | `addsub` | 1–24 | Integer addition, subtraction, negative numbers, missing numbers |
 | `muldiv` | 1–26 | Integer multiplication/division, parentheses, mixed operations, missing numbers |
 | `fraction` | 1–18 | Fractions, decimals, and mixed numeric types |
 
-Level numbers identify exercise presets, not school grades or a strictly increasing
-difficulty scale. `fraction` is a stable identifier and includes decimal exercises.
+Each level identifies an exercise preset, described in the [level catalog](docs/levels.md).
+For example, `addsub` level 1 adds two integers from 0 to 10; sums may reach 20.
+
+### Generate a PDF
+
+Generate **five pages of addition practice**, saved to `worksheets/addition.pdf`:
 
 ```bash
-arithmetic list
-arithmetic describe --series fraction --level 10
-arithmetic generate --series fraction --level 10 --pages 2 --seed 42 --output worksheets/decimals.pdf
+uv run arithmetic generate --series addsub --level 1 --pages 5 --output worksheets/addition.pdf
 ```
 
-Every level has its own goal, source ranges, actual examples, page capacity, and
-command in the [complete catalog](docs/levels.md) ([中文](docs/levels.zh-CN.md)).
-Machine-readable equivalents are available through `list --json` and `describe --json`.
+`generate` creates a PDF. The four arguments above specify:
 
-## Behavior and configuration
+| Argument | Meaning | Required? |
+|---|---|---|
+| `--series addsub` | Select the addition/subtraction series | Required |
+| `--level 1` | Select level 1 within that series | Required |
+| `--pages 5` | Generate five pages | Optional; default: 10 pages |
+| `--output worksheets/addition.pdf` | Set the PDF file location | Optional; default: `worksheets/{series}/level-{level}.pdf` |
 
-- Defaults: `addsub`, level 1, 10 pages; 10 problems/page for integer series,
-  14 for the fraction series, with 12 for fraction levels 8, 9, 17, and 18.
-- `--seed` repeats problem content within the same program/dependency versions;
-  PDF dates and metadata mean PDF bytes need not match.
-- Normal mode excludes undefined expressions and missing-number equations without
-  a unique rational solution. A level's source range does not necessarily bound its answer.
-- `--allow-undefined` enables optional division-by-zero recognition exercises and
-  labels the PDF footer. It permits such examples but does not guarantee one on every page.
-- Fractions are printed inline (`3/4`); decimals and fractions can be mixed.
-- There are no answer sheets, arbitrary operand-range flags, or GUI in this release.
-- Diversity selection reduces repetition; small pools can still produce repeated questions.
+The command prints the file location when complete. Open the PDF and print at actual size on A4 paper.
 
-Use `--config examples/override.yaml` to merge layout and page-count settings with
-the defaults. See [usage and configuration](docs/usage.md) for all options, path rules,
-batch generation, Python usage, and troubleshooting.
+You can also add these options:
 
-## Development
+| Option | Purpose |
+|---|---|
+| `--seed 42` | Reproduce problem content with the same program and dependency versions; omitted seeds are randomly chosen and printed |
+| `--disallow-zero-denominator` | Exclude expressions with a zero denominator or divisor; allowed by default |
+| `--config examples/override.yaml` | Load layout and problems-per-page settings from a YAML file |
+| `--force` | Replace an existing file; existing files cause an error by default |
+| `--json` | Return file locations, page counts, exercises, seeds, and other generation details as JSON for programs or agents |
+
+For example, generate **two pages of division practice with no division by zero and a fixed seed**:
 
 ```bash
-uv sync
-uv run pytest
-uv run ruff check .
-uv run ruff format --check .
-uv run python scripts/build_catalog_docs.py --check
-uv build
+uv run arithmetic generate --series muldiv --level 5 --pages 2 --seed 42 --disallow-zero-denominator --output worksheets/division.pdf
 ```
 
-See [contributing](CONTRIBUTING.md) for contribution guidelines.
+You can also give the repository URL or local folder to an agent that can run commands, with a request:
 
-## License and generated PDFs
+> Use this project to generate five pages of basic multiplication practice without negative operands,
+> saved in worksheets/. Verify the PDF and provide a file link and the generation settings.
 
-Project code and original documentation use the [MIT License](LICENSE), allowing
-use, modification, redistribution, and commercial use under its terms.
+## Other commands
 
-Namishu permits you to print, share, modify, and sell the generated worksheets.
-You do not need to attach the software license solely because you used this
-program to generate a PDF. Third-party assets retain their own applicable terms.
-No font files are distributed with this project. Installed dependencies retain their own licenses.
-Using the software does not imply Namishu's endorsement of your materials.
+### List exercises: `list`
+
+Show every series, level, and exercise name. Use `--series` to filter by series, or `--json` for JSON output.
+
+```bash
+uv run arithmetic list
+uv run arithmetic list --series muldiv
+```
+
+### Inspect a level: `describe`
+
+Show operand ranges, operation rules, examples, and problems per page for one level.
+Both `--series` and `--level` are required; `--json` returns JSON output.
+
+```bash
+uv run arithmetic describe --series muldiv --level 5
+```
+
+### Generate a complete collection: `generate --all`
+
+Create a separate PDF for each of the 68 levels. This command generates one page per level:
+
+```bash
+uv run arithmetic generate --all --pages 1 --output-dir worksheets/collection
+```
+
+`--all` selects every exercise; `--output-dir` sets the root directory, defaulting to `worksheets`.
+Files are stored as `{series}/level-{level}.pdf`.
+Batch generation accepts `--pages`, `--seed`, `--disallow-zero-denominator`, `--config`, `--force`, and `--json`.
+It cannot be combined with `--series`, `--level`, or `--output`. `--output-dir` is only available with `--all`.
+
+### Help and version
+
+```bash
+uv run arithmetic --help
+uv run arithmetic generate --help
+uv run arithmetic --version
+```
+
+`list` and `describe` also accept `--help`.
+
+## Default configuration
+
+| Setting | Default |
+|---|---|
+| Pages | 10 per PDF |
+| Problems per page | Integer series: 10; fraction series: 14, with 12 fixed for levels 8, 9, 17, and 18 |
+| Paper | A4 |
+| Output path | `worksheets/{series}/level-{level}.pdf` |
+| Zero denominators/divisors | Allowed |
+| Output language | English |
+
+Series and level must be selected explicitly. Each blank always requires a unique valid rational solution.
+Save an override as `worksheet.yaml` to adjust problems per page, margins (in millimeters), and line spacing.
+Only supplied settings change; other settings keep their defaults.
+
+```yaml
+problems_per_page:
+  default: 12
+layout:
+  margin:
+    left_mm: 20
+    right_mm: 20
+  typography:
+    line_spacing_ratio: 1.0
+```
+
+```bash
+uv run arithmetic generate --series addsub --level 1 --config worksheet.yaml
+```
+
+`default` sets the integer series capacity; use `fraction` alongside it to set the fraction series capacity.
+The four levels with a fixed 12-question capacity retain that value.
+See [examples/override.yaml](examples/override.yaml) for a ready-to-use file.
+
+## License
+
+Code and original documentation use the [MIT License](LICENSE).
+Generated worksheets may be printed, shared, modified, and sold. Third-party assets follow their own license terms.

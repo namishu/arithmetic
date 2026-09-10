@@ -49,11 +49,11 @@ def test_operators_boundaries() -> None:
 def test_level_specs_generate_expected_counts() -> None:
     run_project_python(
         "arithmetic",
-        "from namishu_arithmetic.specs import LevelSpec, MixedLevelSpec, OperandBlock, OperatorBlock, VariantSpec; "
+        "from namishu_arithmetic.specs import LevelSpec, MixedLevelSpec, OperandBlock, OperatorBlock; "
         "spec = LevelSpec(OperandBlock(2, 0, 2), OperatorBlock(operators=['+', '='])); "
         "assert len(spec.generate(3)) == 3; "
         "sub = LevelSpec(OperandBlock(2, 0, 2), OperatorBlock(operators=['-', '='])); "
-        "mixed = MixedLevelSpec([VariantSpec(spec), VariantSpec(sub)]); "
+        "mixed = MixedLevelSpec([spec, sub]); "
         "assert len(mixed.generate(5)) == 5",
     )
 

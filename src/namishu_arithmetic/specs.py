@@ -114,29 +114,18 @@ class LevelSpec:
 
 
 @dataclass(frozen=True)
-class VariantSpec:
-    spec: LevelSpec
-    weight: int = 1
-
-
-@dataclass(frozen=True)
 class MixedLevelSpec:
-    variants: list[VariantSpec] = field(default_factory=list)
+    variants: list[LevelSpec] = field(default_factory=list)
 
     def generate(self, count: int) -> list[str]:
-        total_weight = sum(variant.weight for variant in self.variants)
-        if total_weight <= 0:
-            raise ValueError("mixed level requires positive variant weights")
+        if not self.variants:
+            raise ValueError("mixed level requires at least one variant")
 
         problems: list[str] = []
-        remaining = count
+        per_variant = count // len(self.variants)
         for index, variant in enumerate(self.variants):
-            if index == len(self.variants) - 1:
-                variant_count = remaining
-            else:
-                variant_count = count * variant.weight // total_weight
-                remaining -= variant_count
-            problems.extend(variant.spec.generate(variant_count))
+            variant_count = count - per_variant * index if index == len(self.variants) - 1 else per_variant
+            problems.extend(variant.generate(variant_count))
 
         np.random.shuffle(problems)
         return problems[:count]

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 from pathlib import Path
 
 from namishu_arithmetic.catalog import describe_level, list_levels
@@ -29,10 +30,11 @@ def render(lang: str, descriptions: list[dict]) -> str:
         else "Source ranges are not answer ranges. Fraction ranges describe numerators and denominators. "
         "Missing numbers may lie outside source ranges and can be negative or fractional.",
         "",
-        "普通模式排除除零以及无解、多解填空。只有显式使用 `--allow-undefined` 才允许除零识别题；不保证每页出现。"
+        "默认允许分母或除数为 0，使用 `--disallow-zero-denominator` 排除。填空题始终要求唯一有效解。"
         if zh
-        else "Normal mode excludes division by zero and blanks without a unique solution. "
-        "`--allow-undefined` permits undefined-expression recognition tasks but does not guarantee one per page.",
+        else "Zero denominators and divisors are allowed by default; "
+        "use `--disallow-zero-denominator` to exclude them. "
+        "Blanks always require a unique valid solution.",
         "",
     ]
     names = {
@@ -45,7 +47,7 @@ def render(lang: str, descriptions: list[dict]) -> str:
         for item in descriptions:
             if item["series"] != code:
                 continue
-            lines.extend([f"- [{item['level']}. {item['title'][lang]}](#{code}-{item['level']})"])
+            lines.extend([f"- [{item['level']}. {item['title']}](#{code}-{item['level']})"])
         lines.append("")
     for item in descriptions:
         code, level = item["series"], item["level"]
@@ -53,9 +55,9 @@ def render(lang: str, descriptions: list[dict]) -> str:
             [
                 f'<a id="{code}-{level}"></a>',
                 "",
-                f"## {code} {level}: {item['title'][lang]}",
+                f"## {code} {level}: {item['title']}",
                 "",
-                item["rules"][lang],
+                item["rules"],
                 "",
                 f"- {'数字类型' if zh else 'Numeric types'}: {', '.join(item['operand_types'])}",
                 f"- {'可能出现负操作数' if zh else 'Negative operands possible'}: {item['negative_operands_possible']}",
@@ -82,9 +84,19 @@ def main():
     parser.add_argument("--check", action="store_true")
     args = parser.parse_args()
     descriptions = [describe_level(item["series"], item["level"]) for item in list_levels()]
+    translations = json.loads((ROOT / "scripts/catalog.zh-CN.json").read_text(encoding="utf-8"))["levels"]
+    by_level = {(item["series"], item["level"]): item for item in translations}
+    expected = {(item["series"], item["level"]) for item in descriptions}
+    if len(translations) != len(expected) or set(by_level) != expected:
+        raise ValueError("Chinese documentation translations must match the level catalog")
     for lang, filename in [("en", "levels.md"), ("zh-CN", "levels.zh-CN.md")]:
         path = ROOT / "docs" / filename
-        content = render(lang, descriptions)
+        localized = (
+            [{**item, **by_level[item["series"], item["level"]]} for item in descriptions]
+            if lang == "zh-CN"
+            else descriptions
+        )
+        content = render(lang, localized)
         if args.check:
             if not path.exists() or path.read_text(encoding="utf-8") != content:
                 raise SystemExit(f"Stale catalog: run python scripts/build_catalog_docs.py ({filename})")

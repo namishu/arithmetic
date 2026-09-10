@@ -6,7 +6,6 @@ from pathlib import Path
 from reportlab.lib.units import mm
 from reportlab.pdfgen import canvas
 
-from .fonts import register_configured_font
 from .pdf import create_canvas
 
 
@@ -32,14 +31,10 @@ class WorksheetRenderer:
         series_label: str,
         level_label: str,
         generated_on: str,
-        project_dir: str | Path,
-        teaching_mode: bool = False,
     ):
-        self.teaching_mode = teaching_mode
         self.cfg = layout_config
         self.header = HeaderInfo(series_label=series_label, level_label=level_label, generated_on=generated_on)
-        self.project_dir = Path(project_dir)
-        self.font_name = self._register_font()
+        self.font_name = "Helvetica"
         self._validate_layout()
 
     def render(self, pages: list[list[str]], output_path: str | Path) -> Path:
@@ -126,7 +121,7 @@ class WorksheetRenderer:
         footer = self.cfg["footer"]
         typography = self.cfg["typography"]
         y = footer["offset_y_mm"] * mm
-        text = ("Identify undefined expressions | " if self.teaching_mode else "") + str(page_num)
+        text = str(page_num)
         font_size = footer["font_size_pt"]
 
         pdf.setFont(self.font_name, font_size)
@@ -134,13 +129,6 @@ class WorksheetRenderer:
         text_width = pdf.stringWidth(text, self.font_name, font_size)
         pdf.drawString((page_width_pt - text_width) / 2, y, text)
         pdf.setFillColor("#000000")
-
-    def _register_font(self) -> str:
-        typography = self.cfg["typography"]
-        return register_configured_font(
-            {"name": typography["font_name"], "path": typography.get("font_path")},
-            base_dir=self.project_dir,
-        )
 
     def _validate_layout(self) -> None:
         page = self.cfg["page"]

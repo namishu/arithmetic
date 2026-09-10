@@ -7,17 +7,15 @@ read [README.md](../README.md). For available exercises, use the [level catalog]
 
 You need shell execution, Python 3.10+, dependency installation, and access to
 output files. Inspect the existing environment first. From the repository root,
-use `uv sync` and prefix commands with `uv run`, or follow the README's virtual
-environment instructions. Run `arithmetic --help` to verify installation.
+use `uv sync` and run `uv run arithmetic --help` to verify installation.
 Never claim completion if execution or file delivery is unavailable.
 
-The command examples below assume the environment is active. When using uv,
-prefix them with `uv run`.
+Prefix the command examples below with `uv run`.
 
 ## 2. Understand and select
 
 Use `arithmetic list --json`, then `arithmetic describe --series CODE --level N --json`.
-The JSON includes bilingual goals and source ranges, numeric types, allowed
+The JSON includes English goals and source ranges, numeric types, allowed
 operations, possible negative operands, blanks, grouping, actual examples, and
 page capacity. Use these facts, not level numbers alone.
 
@@ -26,7 +24,7 @@ page capacity. Use these facts, not level numbers alone.
 | Basic addition | `addsub 1` | Operands 0–10; sums up to 20 |
 | Nonnegative subtraction | `addsub 2` | Minuend may reach 20 |
 | Nonnegative basic multiplication | `muldiv 1` | Factors 0–9, including zero |
-| Nonnegative exact division | `muldiv 5` | Normal mode excludes zero divisors |
+| Nonnegative exact division | `muldiv 5` | Use `--disallow-zero-denominator` to exclude zero divisors |
 | Fraction addition/subtraction | `fraction 1` | Operands nonnegative; answers may be negative |
 | Decimal addition/subtraction | `fraction 10` | Signed one-place decimals |
 | Decimal multiplication | `fraction 13` | Signed one-place decimals |
@@ -41,6 +39,8 @@ to promise curriculum alignment.
 
 ## 3. Generate
 
+Single-file generation requires explicit `--series` and `--level`; neither has a default.
+
 For example, a request for five pages of nonnegative basic multiplication:
 
 ```bash
@@ -53,9 +53,14 @@ and mode. Keep the seed for reproducing problem content. If a filename exists,
 choose a new one unless replacement was requested. `--all` creates 68 files and
 should only be used when a complete collection is requested.
 
-Omit `--allow-undefined` for ordinary practice. Enable it only when the user
-requests undefined-expression recognition exercises. It does not guarantee such
-an expression on every page and never permits blanks without a unique solution.
+Zero denominators and divisors are allowed by default. Add `--disallow-zero-denominator`
+when the user requires defined expressions. Allowing division by zero does not guarantee
+it appears on every page. Blanks always require a unique valid solution.
+
+Relative output and configuration paths resolve from the current working directory.
+Successful `--json` output is one JSON object on stdout; errors go to stderr with exit code 2.
+Catalog and generation JSON use schema 2. Catalog `title`, `rules`, and `notes` are English strings;
+generation records include `allow_zero_denominator`.
 
 ## 4. Verify and deliver
 
@@ -81,8 +86,7 @@ installed program for normal generation requests; change source only if requeste
 - Missing dependency: install this project in that same environment.
 - Invalid level: query `list` and `describe`; do not guess a new number.
 - Existing file: choose another output name, or use `--force` when replacement is intended.
-- Custom font failure: inspect the config-relative path, or remove the override to use standard Helvetica.
 - Unsupported request: explain the specific constraint and propose a documented preset.
 
-See [usage](usage.md) for configuration and [the catalog](levels.md) for all 68 presets.
+See [README configuration](../README.md#default-configuration) for configuration and [the catalog](levels.md) for all 68 presets.
 Markdown and CLI metadata are enough; no agent-specific plugin is required.

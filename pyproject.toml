@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "namishu-arithmetic"
-version = "0.1.0"
+version = "1.0.0"
 description = "Printable arithmetic worksheets for integers, fractions, and decimals."
 readme = "README.md"
 requires-python = ">=3.10"

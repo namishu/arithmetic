@@ -19,7 +19,7 @@ class WorksheetRequest:
     level: int
     pages: int
     seed: int
-    allow_undefined: bool = False
+    allow_zero_denominator: bool = True
 
 
 class ArithmeticApp:
@@ -32,12 +32,6 @@ class ArithmeticApp:
             override_cfg = load_yaml(Path(config_path).resolve())
             self.main_cfg = self._merge_dict(self.main_cfg, override_cfg)
 
-        if config_path is not None:
-            font_path = override_cfg.get("layout", {}).get("typography", {}).get("font_path")
-            if font_path:
-                resolved = Path(config_path).resolve().parent / font_path
-                self.main_cfg["layout"]["typography"]["font_path"] = str(resolved)
-
         self._validate_main_config(self.main_cfg)
 
         self.layout_cfg = self.main_cfg["layout"]
@@ -49,9 +43,11 @@ class ArithmeticApp:
         output_path: str | Path,
         pages: int = 10,
         seed: int | None = None,
-        allow_undefined: bool = False,
+        allow_zero_denominator: bool = True,
     ) -> Path:
-        request = self._request(series=series, level=level, pages=pages, seed=seed, allow_undefined=allow_undefined)
+        request = self._request(
+            series=series, level=level, pages=pages, seed=seed, allow_zero_denominator=allow_zero_denominator
+        )
         page_items = self._generate_pages_from_request(request)
 
         output = Path(output_path)
@@ -62,8 +58,6 @@ class ArithmeticApp:
             series_label=request.series.display_name,
             level_label=f"Level {request.level}",
             generated_on=date.today().isoformat(),
-            project_dir=self.project_dir,
-            teaching_mode=request.allow_undefined,
         ).render(page_items, output)
         return output
 
@@ -73,9 +67,11 @@ class ArithmeticApp:
         level: int,
         pages: int = 10,
         seed: int | None = None,
-        allow_undefined: bool = False,
+        allow_zero_denominator: bool = True,
     ) -> list[list[str]]:
-        request = self._request(series=series, level=level, pages=pages, seed=seed, allow_undefined=allow_undefined)
+        request = self._request(
+            series=series, level=level, pages=pages, seed=seed, allow_zero_denominator=allow_zero_denominator
+        )
         return self._generate_pages_from_request(request)
 
     def _generate_pages_from_request(self, request: WorksheetRequest) -> list[list[str]]:
@@ -90,7 +86,7 @@ class ArithmeticApp:
             candidates = [
                 problem
                 for problem in generator.generate(request.level, candidate_count)
-                if is_valid_problem(problem, allow_undefined=request.allow_undefined)
+                if is_valid_problem(problem, allow_zero_denominator=request.allow_zero_denominator)
             ]
             if len(candidates) >= request.pages * page_size:
                 break
@@ -105,7 +101,7 @@ class ArithmeticApp:
         )
 
     def _request(
-        self, series: str, level: int, pages: int, seed: int | None, allow_undefined: bool = False
+        self, series: str, level: int, pages: int, seed: int | None, allow_zero_denominator: bool = True
     ) -> WorksheetRequest:
         if not isinstance(level, int) or level <= 0:
             raise ValueError(f"invalid level: {level}")
@@ -115,7 +111,11 @@ class ArithmeticApp:
         spec = get_series_spec(series)
         spec.validate_level(level)
         return WorksheetRequest(
-            series=spec, level=level, pages=pages, seed=self._resolve_seed(seed), allow_undefined=allow_undefined
+            series=spec,
+            level=level,
+            pages=pages,
+            seed=self._resolve_seed(seed),
+            allow_zero_denominator=allow_zero_denominator,
         )
 
     def _series_cfg(self, series_code: str, seed: int) -> dict[str, int]:
@@ -154,6 +154,9 @@ class ArithmeticApp:
         for section in required_layout_sections:
             if section not in layout or not isinstance(layout[section], dict):
                 raise ValueError(f"config.layout.{section} must be a mapping")
+
+        if "font_name" in layout["typography"] or "font_path" in layout["typography"]:
+            raise ValueError("font configuration is not supported; worksheets use Helvetica")
 
         ppp = cfg.get("problems_per_page")
         if not isinstance(ppp, dict) or "default" not in ppp:

@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from ..level_generator import LevelGenerator
-from ..specs import LevelSpec, MixedLevelSpec, OperandBlock, OperatorBlock, VariantSpec
+from ..specs import LevelSpec, MixedLevelSpec, OperandBlock, OperatorBlock
 
 
 def _addition_as_subtraction(rows: list[list[int]]) -> list[list[int]]:
@@ -35,13 +35,11 @@ _LEVEL_MAP = {
     ),
     3: MixedLevelSpec(
         [
-            VariantSpec(LevelSpec(OperandBlock(2, 0, 10), OperatorBlock(operators=["+", "="]))),
-            VariantSpec(
-                LevelSpec(
-                    OperandBlock(2, 0, 10),
-                    OperatorBlock(operators=["-", "="]),
-                    transform_rows=_addition_as_subtraction,
-                )
+            LevelSpec(OperandBlock(2, 0, 10), OperatorBlock(operators=["+", "="])),
+            LevelSpec(
+                OperandBlock(2, 0, 10),
+                OperatorBlock(operators=["-", "="]),
+                transform_rows=_addition_as_subtraction,
             ),
         ]
     ),
@@ -53,33 +51,27 @@ _LEVEL_MAP = {
     ),
     6: MixedLevelSpec(
         [
-            VariantSpec(LevelSpec(OperandBlock(3, 0, 10), OperatorBlock(operators=["+", "+", "="]))),
-            VariantSpec(
-                LevelSpec(
-                    OperandBlock(3, 0, 10),
-                    OperatorBlock(operators=["-", "-", "="]),
-                    transform_rows=_three_terms_as_subtractions,
-                )
+            LevelSpec(OperandBlock(3, 0, 10), OperatorBlock(operators=["+", "+", "="])),
+            LevelSpec(
+                OperandBlock(3, 0, 10),
+                OperatorBlock(operators=["-", "-", "="]),
+                transform_rows=_three_terms_as_subtractions,
             ),
         ]
     ),
     7: MixedLevelSpec(
         [
-            VariantSpec(
-                LevelSpec(
-                    OperandBlock(3, 0, 10),
-                    OperatorBlock(operators=["+", "-", "="]),
-                    transform_rows=_plus_then_minus,
-                )
+            LevelSpec(
+                OperandBlock(3, 0, 10),
+                OperatorBlock(operators=["+", "-", "="]),
+                transform_rows=_plus_then_minus,
             ),
-            VariantSpec(
-                LevelSpec(
-                    OperandBlock(3, 0, 10),
-                    OperatorBlock(operators=["-", "+", "="]),
-                    transform_rows=_minus_then_plus,
-                )
+            LevelSpec(
+                OperandBlock(3, 0, 10),
+                OperatorBlock(operators=["-", "+", "="]),
+                transform_rows=_minus_then_plus,
             ),
-            VariantSpec(LevelSpec(OperandBlock(3, 0, 10), OperatorBlock(operators=["+", "+", "="]))),
+            LevelSpec(OperandBlock(3, 0, 10), OperatorBlock(operators=["+", "+", "="])),
         ]
     ),
     8: LevelSpec(
@@ -89,33 +81,27 @@ _LEVEL_MAP = {
     ),
     9: MixedLevelSpec(
         [
-            VariantSpec(LevelSpec(OperandBlock(2, 0, 15), OperatorBlock(operators=["-", "="]))),
-            VariantSpec(
-                LevelSpec(
-                    operands=OperandBlock(1, 0, 15),
-                    prefix_operands=(OperandBlock(1, -15, -1),),
-                    operators=OperatorBlock(operators=["+", "="]),
-                )
+            LevelSpec(OperandBlock(2, 0, 15), OperatorBlock(operators=["-", "="])),
+            LevelSpec(
+                operands=OperandBlock(1, 0, 15),
+                prefix_operands=(OperandBlock(1, -15, -1),),
+                operators=OperatorBlock(operators=["+", "="]),
             ),
         ]
     ),
     10: MixedLevelSpec(
         [
-            VariantSpec(
-                LevelSpec(
-                    operands=OperandBlock(1, 0, 15),
-                    prefix_operands=(OperandBlock(1, -15, -1),),
-                    operators=OperatorBlock(operators=["-", "="]),
-                )
+            LevelSpec(
+                operands=OperandBlock(1, 0, 15),
+                prefix_operands=(OperandBlock(1, -15, -1),),
+                operators=OperatorBlock(operators=["-", "="]),
             ),
-            VariantSpec(
-                LevelSpec(
-                    operands=OperandBlock(1, 0, 15),
-                    prefix_operands=(OperandBlock(1, -15, -1),),
-                    operators=OperatorBlock(operators=["+", "="]),
-                )
+            LevelSpec(
+                operands=OperandBlock(1, 0, 15),
+                prefix_operands=(OperandBlock(1, -15, -1),),
+                operators=OperatorBlock(operators=["+", "="]),
             ),
-            VariantSpec(LevelSpec(OperandBlock(2, 0, 15), OperatorBlock(operators=["-", "="]))),
+            LevelSpec(OperandBlock(2, 0, 15), OperatorBlock(operators=["-", "="])),
         ]
     ),
     11: LevelSpec(

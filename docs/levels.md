@@ -8,7 +8,7 @@ Level IDs identify presets, not school grades or strictly increasing difficulty.
 
 Source ranges are not answer ranges. Fraction ranges describe numerators and denominators. Missing numbers may lie outside source ranges and can be negative or fractional.
 
-Normal mode excludes division by zero and blanks without a unique solution. `--allow-undefined` permits undefined-expression recognition tasks but does not guarantee one per page.
+Zero denominators and divisors are allowed by default; use `--disallow-zero-denominator` to exclude them. Blanks always require a unique valid solution.
 
 ## addsub: Addition and subtraction
 

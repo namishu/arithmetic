@@ -27,9 +27,8 @@ def describe_level(series: str, level: int) -> dict:
         f"arithmetic generate --series {spec.code} --level {level} --pages 1 "
         f"--seed 42 --output worksheets/{spec.code}-level-{level}.pdf"
     )
-    record["notes"] = {
-        "en": "Source ranges do not necessarily bound displayed values or answers. "
-        "Normal mode requires defined expressions and unique rational solutions for blanks.",
-        "zh-CN": "源数范围不一定限制最终显示数或答案。普通模式只保留有定义的算式和具有唯一有理数解的填空题。",
-    }
+    record["notes"] = (
+        "Source ranges do not necessarily bound displayed values or answers. "
+        "Zero denominators and divisors are allowed by default; blanks require unique rational solutions."
+    )
     return record

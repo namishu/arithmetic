@@ -103,7 +103,7 @@ def solve_blank(problem: str) -> Fraction:
     return solution
 
 
-def is_valid_problem(problem: str, *, allow_undefined: bool = False) -> bool:
+def is_valid_problem(problem: str, *, allow_zero_denominator: bool = True) -> bool:
     try:
         if "__" in problem:
             solve_blank(problem)
@@ -114,6 +114,6 @@ def is_valid_problem(problem: str, *, allow_undefined: bool = False) -> bool:
                 return False
         return True
     except ZeroDivisionError:
-        return allow_undefined and "__" not in problem
+        return allow_zero_denominator and "__" not in problem
     except (ValueError, SyntaxError):
         return False
