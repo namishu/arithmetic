@@ -25,7 +25,7 @@ class WorksheetRequest:
 class ArithmeticApp:
     def __init__(self, config_path: str | Path | None = None):
         self.project_dir = Path(__file__).resolve().parent / "data"
-        self.config_path = self.project_dir / "main.yaml"
+        self.config_path = self.project_dir / "default.yaml"
         self.main_cfg = load_yaml(self.config_path)
 
         if config_path is not None:

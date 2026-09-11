@@ -21,3 +21,15 @@ not code changes. Read [README.md](README.md) (or [Simplified Chinese](README.zh
 have English and Simplified Chinese versions; the agent operation guide is in
 English. Keep architecture, implementation explanations, and maintenance workflows
 out of `docs/`. For requested code changes, inspect the source and run the relevant checks.
+
+Generate only the English level catalog with `scripts/build_catalog_docs.py`.
+Translate and update `docs/levels.zh-CN.md` directly with AI when the English catalog changes;
+do not generate translations with scripts or maintain a separate translation data file.
+Preserve level IDs, numeric ranges, examples, and CLI commands when translating.
+
+Run functional tests with `uv run pytest`. Build release distributions separately
+with `uv build`, then verify the exact wheel using
+`uv run python scripts/check_wheel.py dist/namishu_arithmetic-VERSION-py3-none-any.whl`.
+The checker installs only the wheel and its runtime dependencies into a temporary
+environment, tests the installed CLI, and reads the generated PDF. It requires uv
+and the project's development dependencies. CI publishes the same verified artifacts.
